@@ -36,8 +36,8 @@
 <meta name="generator" content="Jekyll v4.2.1" />
 <meta property="og:title" content="Hamdan Iftikhar" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="A minimal, portfolio, sidebar, bootstrap Jekyll theme, responsive web design for a Data Analyst." />
-<meta property="og:description" content="A minimal, portfolio, sidebar, bootstrap Jekyll theme, responsive web design for a Data Analyst." />
+<meta name="description" content="A data analyst" />
+<meta property="og:description" content="A data analyst" />
 <link rel="canonical" href="http://localhost:4000/page2/" />
 <meta property="og:url" content="http://localhost:4000/page2/" />
 <meta property="og:site_name" content="Hamdan Iftikhar" />
@@ -48,7 +48,7 @@
 <meta name="twitter:site" content="@twitter_username" />
 <meta name="google-site-verification" content="google_meta_tag_verification" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/page2/","@type":"WebPage","description":"A minimal, portfolio, sidebar, bootstrap Jekyll theme, responsive web design for a Data Analyst.","headline":"Hamdan Iftikhar","@context":"https://schema.org"}</script>
+{"url":"http://localhost:4000/page2/","@type":"WebPage","description":"A data analyst","headline":"Hamdan Iftikhar","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -114,15 +114,37 @@
     <!--
   The Side Bar
 -->
-
 <div id="sidebar" class="d-flex flex-column align-items-end" lang="en">
   <div class="profile-wrapper text-center">
-    <div id="avatar">
+    <!-- <div id="avatar">
       <a href="/" alt="avatar" class="mx-auto">
         
           
-          <img src="\assets\img\favicons\passport.jpg" alt="avatar" onerror="this.style.display='none'">
+          <img src="\assets\img\favicons\pic2.jpg" alt="avatar" onerror="this.style.display='none'">
         
+      </a>
+    </div> -->
+    <div id="avatar">
+      <a href="#" alt="avatar" class="mx-auto">
+        <script>
+
+        </script>
+        <img id="click_me" src="\assets\img\favicons\pic2.jpg" />
+        <!-- <a href="#" id="click_me">Click Me</a> -->
+        <script type="text/javascript">
+          document.getElementById('click_me').addEventListener("click", function(event) {
+              (function(event) {
+                  // alert(document.getElementById("click_me").src.endsWith("2.jpg"));
+                  // document.getElementById("click_me").src = "/assets/img/favicons/pic1.jpg";
+                  if (document.getElementById("click_me").src.endsWith("2.jpg"))  //==:Comparison
+                  {
+                    document.getElementById("click_me").src = "/assets/img/favicons/pic1.png"
+                  }
+                  else
+                    document.getElementById("click_me").src = "/assets/img/favicons/pic2.jpg"
+                  }).call(document.getElementById('click_me'), event);
+            });
+        </script>
       </a>
     </div>
 
@@ -145,29 +167,11 @@
     <!-- the real tabs -->
     
     <li class="nav-item">
-      <a href="/categories/" class="nav-link">
-        <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i>
-        
-
-        <span>CATEGORIES</span>
-      </a>
-    </li> <!-- .nav-item -->
-    
-    <li class="nav-item">
       <a href="/projects/" class="nav-link">
         <i class="fa-fw fas fa-tag ml-xl-3 mr-xl-3 unloaded"></i>
         
 
-        <span>TAGS</span>
-      </a>
-    </li> <!-- .nav-item -->
-    
-    <li class="nav-item">
-      <a href="/archives/" class="nav-link">
-        <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i>
-        
-
-        <span>ARCHIVES</span>
+        <span>PROJECTS</span>
       </a>
     </li> <!-- .nav-item -->
     
@@ -189,33 +193,11 @@
       
 
       
-      <a href="https://github.com/i-hamdan" aria-label="github"
-        class="order-3"
-        target="_blank" rel="noopener">
-        <i class="fab fa-github"></i>
-      </a>
-      
-
-    
-      
-
-      
-      <a href="https://twitter.com/twitter_username" aria-label="twitter"
-        class="order-4"
-        target="_blank" rel="noopener">
-        <i class="fab fa-twitter"></i>
-      </a>
-      
-
-    
-      
-
-      
       <a href="
           javascript:location.href = 'mailto:' + ['hamdan.iitkgp','gmail.com'].join('@')" aria-label="email"
-        class="order-5"
+        class="order-3"
         >
-        <i class="fas fa-envelope"></i>
+        <i class="fas fa-at"></i>
       </a>
       
 
@@ -223,10 +205,10 @@
       
 
       
-      <a href="/feed.xml" aria-label="rss"
-        class="order-6"
-        >
-        <i class="fas fa-rss"></i>
+      <a href="https://www.linkedin.com/in/hamdan-ai/" aria-label="linkedin"
+        class="order-4"
+        target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
       </a>
       
 
@@ -404,7 +386,7 @@
 
     
       <!-- index page -->
-      <span><img src="assets\img\favicons\android-chrome-192x192.png" width="40" height="32"> that<i>analyst</i>.net</span>
+      <span><img src="\assets\img\favicons\android-chrome-192x192.png" width="40" height="32"> that<i>analyst</i>.net</span>
       <span>Home</span>
 
     
@@ -480,11 +462,14 @@
   <blockquote>What did the data analysts name their music band? The ROCCC band! :)</blockquote>
   <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi repudiandae perspiciatis harum voluptatibus a autem exercitationem deleniti eaque laboriosam, amet maxime corrupti nesciunt! Pariatur nisi exercitationem cum, veniam quibusdam ea!</p>
   <!-- <p> <ul><li>python</li><li>r</li><li>sql</li><li>markdown</li><li>dashboard</li></ul></p>   -->
+  
+  
+  
 </div>
 <hr class="dashed">
 
   
-<div style="width:50%;float: left;">
+<div id="skills-id" style="width:50%; float: left;">
   <!-- <h1 style="margin-bottom: 10%;">Skils</h1> -->
   <div style="margin-top:5%; margin-right: 10%; height: 100%" class="language-text highlighter-rouge">
     <div class="code-header">
@@ -511,7 +496,9 @@
 </td></tr></tbody></table></code></div></div>
   <!-- <ul><li>python</li><li>r</li><li>sql</li><li>markdown</li><li>dashboard</li></ul> -->
 </div>
-<div style="width: 50%;float: right; padding-bottom: 20px; padding:;">
+
+
+<div id="list-id" style="width: 50%;float: right; padding-bottom: 20px;">
   <h1 style="padding: 0; margin: 0; margin-top: 5%; margin-bottom: 5%;"> Projects</h1>
 
 
@@ -548,7 +535,7 @@
 
   <div class="post-preview">
     <h1>
-      <a href="/posts/google-pv/">Enable Google Page Views</a>
+      <a href="/posts/getting-started/">Getting Started</a>
     </h1>
 
     <div class="post-content">
@@ -559,16 +546,15 @@
 
 
 
-        SQL
-R
-Python
+        Prerequisites
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, eval=TRUE)
+Follow the instructions in the Jekyll Docs to complete the installation of Ruby, RubyGems, Jekyll, and Bundler.
 
-## Getting ready with the Datasets in BigQuery
+Installation
 
-The following file had been downloaded from &lt;https://ourw...
+Creating a New Site
+
+There are two ways to create a new...
       </p>
     </div>
 
@@ -591,8 +577,8 @@ The following file had been downloaded from &lt;https://ourw...
   
     data-toggle="tooltip"
     data-placement="bottom"
-    title="Mon, Jan  4, 2021,  5:02 AM +0530"
-  >Jan  4<i class="unloaded">2021-01-04T05:02:00+05:30</i>
+    title="Fri, Aug  9, 2019,  6:25 PM +0530"
+  >Aug  9, 2019<i class="unloaded">2019-08-09T18:25:00+05:30</i>
 </span>
 
 
@@ -617,7 +603,7 @@ The following file had been downloaded from &lt;https://ourw...
 
 <!-- return element -->
 <span class="readtime" data-toggle="tooltip" data-placement="bottom"
-  title="897 words">4 min</span>
+  title="1019 words">5 min</span>
 
 
         <!-- page views -->
@@ -849,6 +835,16 @@ Ba...
         
         
         
+        <li><a href="/posts/text-and-typography/">Text and Typography</a></li>
+      
+        
+        
+        
+        <li><a href="/posts/write-a-new-post/">Writing a New Post</a></li>
+      
+        
+        
+        
         <li><a href="/posts/getting-started/">Getting Started</a></li>
       
 
@@ -878,20 +874,10 @@ Ba...
     
     
     
-  
-    
-    
-    
-    
       
         
         
 
-  
-    
-    
-    
-    
   
     
     
@@ -914,25 +900,13 @@ Ba...
     
     
       
-        
-        
-
+    
   
     
     
     
     
       
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
     
   
     
@@ -955,10 +929,139 @@ Ba...
     
     
     
+      
+    
   
     
     
     
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
     
   
     
@@ -985,13 +1088,19 @@ Ba...
 
       
         
+        <a class="post-tag" href="/tags/getting-started/">getting started</a>
+      
+        
         <a class="post-tag" href="/tags/google-analytics/">google analytics</a>
       
         
         <a class="post-tag" href="/tags/pageviews/">pageviews</a>
       
         
-        <a class="post-tag" href="/tags/getting-started/">getting started</a>
+        <a class="post-tag" href="/tags/r-preview/">R-preview</a>
+      
+        
+        <a class="post-tag" href="/tags/sql-tutorial/">SQL-tutorial</a>
       
         
         <a class="post-tag" href="/tags/typography/">typography</a>
@@ -1083,20 +1192,10 @@ Ba...
     
     
     
-  
-    
-    
-    
-    
       
         
         
 
-  
-    
-    
-    
-    
   
     
     
@@ -1119,25 +1218,13 @@ Ba...
     
     
       
-        
-        
-
+    
   
     
     
     
     
       
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
     
   
     
@@ -1160,10 +1247,139 @@ Ba...
     
     
     
+      
+    
   
     
     
     
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
     
   
     
@@ -1183,6 +1399,9 @@ Ba...
 
 
 
+      
+        
+        <a class="post-tag" href="/tags/getting-started/">getting started</a>
       
         
         <a class="post-tag" href="/tags/google-analytics/">google analytics</a>
@@ -1191,7 +1410,10 @@ Ba...
         <a class="post-tag" href="/tags/pageviews/">pageviews</a>
       
         
-        <a class="post-tag" href="/tags/getting-started/">getting started</a>
+        <a class="post-tag" href="/tags/r-preview/">R preview</a>
+      
+        
+        <a class="post-tag" href="/tags/sql-tutorial/">SQL tutorial</a>
       
         
         <a class="post-tag" href="/tags/typography/">typography</a>
