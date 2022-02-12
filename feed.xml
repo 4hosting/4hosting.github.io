@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Hamdan Iftikhar</title>
   <subtitle>A data analyst</subtitle>
-  <updated>2021-12-04T13:24:31+05:30</updated>
+  <updated>2022-02-12T12:24:05+05:30</updated>
   <author>
     <name>Hamdan Iftikhar</name>
     <uri>http://localhost:4000/</uri>
@@ -13,7 +13,7 @@
   <link rel="alternate" type="text/html" hreflang="en"
     href="http://localhost:4000/"/>
   <generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator>
-  <rights> © 2021 Hamdan Iftikhar </rights>
+  <rights> © 2022 Hamdan Iftikhar </rights>
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
@@ -22,9 +22,9 @@
   <entry>
     <title>Google Data Analytics Capstone, Bellabeat</title>
     <link href="http://localhost:4000/posts/Bellabeat/" rel="alternate" type="text/html" title="Google Data Analytics Capstone, Bellabeat" />
-    <published>2021-01-03T12:32:00+05:30</published>
+    <published>2021-12-01T12:32:00+05:30</published>
   
-    <updated>2021-01-03T12:32:00+05:30</updated>
+    <updated>2021-12-01T12:32:00+05:30</updated>
   
     <id>http://localhost:4000/posts/Bellabeat/</id>
     <content src="http://localhost:4000/posts/Bellabeat/" />
@@ -54,7 +54,7 @@ R
 
 INTRODUCTION
 
-We are working as a junior data analyst working on the marketing analyst team at Bellabeat, a high-tech manufacturer of health-focused products for women. We are given the task to analyze smart device data to gain insight into how consumers are using their smart devices. The insights we discover will then help guide marketing strategy for the company. We have to pre...
+In this case study, we worked as a junior data analyst working on the marketing analyst team at Bellabeat, a high-tech manufacturer of health-focused products for women, and were given the task to analyze smart device data to gain insight into how consumers are using their smart devices. The insights we discover will then help guide marketing strategy for the compan...
     </summary>
   
 
