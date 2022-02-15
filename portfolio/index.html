@@ -8,8 +8,6 @@
 
 <html lang="en" 
   
-    mode="light"
-  
 >
 
   <!--
@@ -24,7 +22,7 @@
 
   <!-- Begin Jekyll SEO tag v2.7.1 -->
 <meta name="generator" content="Jekyll v4.2.1" />
-<meta property="og:title" content="Portfolio" />
+<meta property="og:title" content="PORTFOLIO" />
 <meta property="og:locale" content="en" />
 <meta name="description" content="A data analyst" />
 <meta property="og:description" content="A data analyst" />
@@ -32,17 +30,17 @@
 <meta property="og:url" content="http://localhost:4000/portfolio/" />
 <meta property="og:site_name" content="Hamdan Iftikhar" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2022-02-15T11:56:35+05:30" />
+<meta property="article:published_time" content="2022-02-15T21:52:43+05:30" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Portfolio" />
+<meta property="twitter:title" content="PORTFOLIO" />
 <meta name="twitter:site" content="@twitter_username" />
 <meta name="google-site-verification" content="google_meta_tag_verification" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/portfolio/","@type":"BlogPosting","headline":"Portfolio","dateModified":"2022-02-15T11:56:35+05:30","datePublished":"2022-02-15T11:56:35+05:30","description":"A data analyst","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/portfolio/"},"@context":"https://schema.org"}</script>
+{"url":"http://localhost:4000/portfolio/","@type":"BlogPosting","headline":"PORTFOLIO","dateModified":"2022-02-15T21:52:43+05:30","datePublished":"2022-02-15T21:52:43+05:30","description":"A data analyst","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/portfolio/"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
-  <title>Portfolio | Hamdan Iftikhar
+  <title>PORTFOLIO | Hamdan Iftikhar
   </title>
 
   <!--
@@ -188,7 +186,7 @@
       
       <a href="
           javascript:location.href = 'mailto:' + ['hamdan.iitkgp','gmail.com'].join('@')" aria-label="email"
-        
+        class="order-3"
         >
         <i class="fas fa-at"></i>
       </a>
@@ -199,7 +197,7 @@
 
       
       <a href="https://www.linkedin.com/in/hamdan-ai/" aria-label="linkedin"
-        
+        class="order-4"
         target="_blank" rel="noopener">
         <i class="fab fa-linkedin"></i>
       </a>
@@ -207,6 +205,163 @@
 
     
 
+    
+      
+        <span class="icon-border order-2"></span>
+      
+<!-- 
+      <span data-toggle="tooltip" data-placement="top"
+          title="Data that is Reliable, Original, Comprehensive, Cu">ROCCC</span>
+          -->
+          <span id="mode-toggle-wrapper" class="order-1" data-toggle="tooltip" data-placement="top"
+          title="Dark <-> Light mode">
+            <!--
+  Switch the mode between dark and light.
+-->
+
+<i class="mode-toggle fas fa-adjust"></i>
+
+<script type="text/javascript">
+
+  class ModeToggle {
+    static get MODE_KEY() { return "mode"; }
+    static get DARK_MODE() { return "dark"; }
+    static get LIGHT_MODE() { return "light"; }
+
+    constructor() {
+      if (this.hasMode) {
+        if (this.isDarkMode) {
+          if (!this.isSysDarkPrefer) {
+            this.setDark();
+          }
+        } else {
+          if (this.isSysDarkPrefer) {
+            this.setLight();
+          }
+        }
+      }
+
+      var self = this;
+
+      /* always follow the system prefers */
+      this.sysDarkPrefers.addListener(function() {
+        if (self.hasMode) {
+          if (self.isDarkMode) {
+            if (!self.isSysDarkPrefer) {
+              self.setDark();
+            }
+
+          } else {
+            if (self.isSysDarkPrefer) {
+              self.setLight();
+            }
+          }
+
+          self.clearMode();
+        }
+
+        self.updateMermaid();
+      });
+
+    } /* constructor() */
+
+
+    setDark() {
+      $('html').attr(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE);
+      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE);
+    }
+
+    setLight() {
+      $('html').attr(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE);
+      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE);
+    }
+
+    clearMode() {
+      $('html').removeAttr(ModeToggle.MODE_KEY);
+      sessionStorage.removeItem(ModeToggle.MODE_KEY);
+    }
+
+    get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); }
+
+    get isSysDarkPrefer() { return this.sysDarkPrefers.matches; }
+
+    get isDarkMode() { return this.mode == ModeToggle.DARK_MODE; }
+
+    get isLightMode() { return this.mode == ModeToggle.LIGHT_MODE; }
+
+    get hasMode() { return this.mode != null; }
+
+    get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); }
+
+    /* get the current mode on screen */
+    get modeStatus() {
+      if (this.isDarkMode
+        || (!this.hasMode && this.isSysDarkPrefer) ) {
+        return ModeToggle.DARK_MODE;
+      } else {
+        return ModeToggle.LIGHT_MODE;
+      }
+    }
+
+    updateMermaid() {
+      if (typeof mermaid !== "undefined") {
+        let expectedTheme = (this.modeStatus === ModeToggle.DARK_MODE? "dark" : "default");
+        let config = { theme: expectedTheme };
+
+        /* re-render the SVG › <https://github.com/mermaid-js/mermaid/issues/311#issuecomment-332557344> */
+        $(".mermaid").each(function() {
+          let svgCode = $(this).prev().children().html();
+          $(this).removeAttr("data-processed");
+          $(this).html(svgCode);
+        });
+
+        mermaid.initialize(config);
+        mermaid.init(undefined, ".mermaid");
+      }
+    }
+
+    flipMode() {
+      if (this.hasMode) {
+        if (this.isSysDarkPrefer) {
+          if (this.isLightMode) {
+            this.clearMode();
+          } else {
+            this.setLight();
+          }
+
+        } else {
+          if (this.isDarkMode) {
+            this.clearMode();
+          } else {
+            this.setDark();
+          }
+        }
+
+      } else {
+        if (this.isSysDarkPrefer) {
+          this.setLight();
+        } else {
+          this.setDark();
+        }
+      }
+
+      this.updateMermaid();
+
+    } /* flipMode() */
+
+  } /* ModeToggle */
+
+  let toggle = new ModeToggle();
+
+  $(".mode-toggle").click(function() {
+
+    toggle.flipMode();
+
+  });
+
+</script>
+
+          </span>
     
 
   </div> <!-- .sidebar-bottom -->
@@ -243,7 +398,7 @@
         
 
           
-            <span>Portfolio</span>
+            <span>PORTFOLIO</span>
           
 
         
@@ -257,7 +412,7 @@
     <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i>
 
     <div id="topbar-title">
-      Portfolio
+      PORTFOLIO
     </div>
 
     <i id="search-trigger" class="fas fa-search fa-fw"></i>
@@ -783,39 +938,10 @@
     <div id="page" class="post pb-5 pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4 mb-md-4">
     
       <h1 class="dynamic-title">
-        Portfolio
+        PORTFOLIO
       </h1>
       <div class="post-content">
-        <div>
-
-
-
-
-
-
-
-
-
-<!-- Get pinned posts -->
-
-
-
-
-
-
-
-<!-- Get default posts -->
-
-
-
-
-
-
-
-
-
-
-<style>
+        <style>
   .grid-container {
     display: grid;
     grid-gap: 10px;
@@ -855,7 +981,7 @@
     grid-gap: 1rem;
   }
 
-  .card2:hover .middle {
+  .card2:hover .middle { 
     transition-delay: 0.6s;
     position: absolute;
     left: 0;
@@ -920,7 +1046,6 @@
 }
 </style>
 
-
 <div class="cards4">
 
   <div class="grid-item">
@@ -945,7 +1070,7 @@
           </div>
         </div>
         <img data-proofer-ignore data-src="\assets\img\Projects\clus2.png" class="img-top" alt="Card Front" />
-        Clustering Visualization
+        <h3 style="padding: 0; margin: 0;">CLUSTERING VISUALIZATION</h3>
     </div>
     </a>
   </div>
@@ -972,7 +1097,7 @@
           </div>
         </div>
         <img data-proofer-ignore data-src="\assets\img\Projects\reco2.png" class="img-top" alt="Card Front" />
-        Recommender System
+        <h3 style="padding: 0; margin: 0;">RECOMMENDER SYSTEM</h3>
     </div>
     </a>
   </div>
@@ -1000,7 +1125,7 @@
           </div>
         </div>
         <img data-proofer-ignore data-src="\assets\img\Projects\bella2.png" class="img-top" alt="Card Front" />
-        Customer Insights
+        <h3 style="padding: 0; margin: 0;">CUSTOMER INSIGHTS</h3>
     </div>
     </a>
   </div>
@@ -1010,12 +1135,11 @@
     <div class="card2">
         <img data-proofer-ignore data-src="\assets\img\Projects\clus1.png" alt="Card Back" />
         <img data-proofer-ignore data-src="\assets\img\Projects\clus2.png" class="img-top" alt="Card Front" />
-        4
+        <h3 style="padding: 0; margin: 0;">CLUSTERING VISUALIZATION</h3>
     </div>
     </a>
   </div>
 
-</div>
 </div>
 
       </div>

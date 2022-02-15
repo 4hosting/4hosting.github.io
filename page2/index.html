@@ -8,8 +8,6 @@
 
 <html lang="en" 
   
-    mode="light"
-  
 >
 
   <!--
@@ -196,7 +194,7 @@
       
       <a href="
           javascript:location.href = 'mailto:' + ['hamdan.iitkgp','gmail.com'].join('@')" aria-label="email"
-        
+        class="order-3"
         >
         <i class="fas fa-at"></i>
       </a>
@@ -207,7 +205,7 @@
 
       
       <a href="https://www.linkedin.com/in/hamdan-ai/" aria-label="linkedin"
-        
+        class="order-4"
         target="_blank" rel="noopener">
         <i class="fab fa-linkedin"></i>
       </a>
@@ -215,6 +213,163 @@
 
     
 
+    
+      
+        <span class="icon-border order-2"></span>
+      
+<!-- 
+      <span data-toggle="tooltip" data-placement="top"
+          title="Data that is Reliable, Original, Comprehensive, Cu">ROCCC</span>
+          -->
+          <span id="mode-toggle-wrapper" class="order-1" data-toggle="tooltip" data-placement="top"
+          title="Dark <-> Light mode">
+            <!--
+  Switch the mode between dark and light.
+-->
+
+<i class="mode-toggle fas fa-adjust"></i>
+
+<script type="text/javascript">
+
+  class ModeToggle {
+    static get MODE_KEY() { return "mode"; }
+    static get DARK_MODE() { return "dark"; }
+    static get LIGHT_MODE() { return "light"; }
+
+    constructor() {
+      if (this.hasMode) {
+        if (this.isDarkMode) {
+          if (!this.isSysDarkPrefer) {
+            this.setDark();
+          }
+        } else {
+          if (this.isSysDarkPrefer) {
+            this.setLight();
+          }
+        }
+      }
+
+      var self = this;
+
+      /* always follow the system prefers */
+      this.sysDarkPrefers.addListener(function() {
+        if (self.hasMode) {
+          if (self.isDarkMode) {
+            if (!self.isSysDarkPrefer) {
+              self.setDark();
+            }
+
+          } else {
+            if (self.isSysDarkPrefer) {
+              self.setLight();
+            }
+          }
+
+          self.clearMode();
+        }
+
+        self.updateMermaid();
+      });
+
+    } /* constructor() */
+
+
+    setDark() {
+      $('html').attr(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE);
+      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE);
+    }
+
+    setLight() {
+      $('html').attr(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE);
+      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE);
+    }
+
+    clearMode() {
+      $('html').removeAttr(ModeToggle.MODE_KEY);
+      sessionStorage.removeItem(ModeToggle.MODE_KEY);
+    }
+
+    get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); }
+
+    get isSysDarkPrefer() { return this.sysDarkPrefers.matches; }
+
+    get isDarkMode() { return this.mode == ModeToggle.DARK_MODE; }
+
+    get isLightMode() { return this.mode == ModeToggle.LIGHT_MODE; }
+
+    get hasMode() { return this.mode != null; }
+
+    get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); }
+
+    /* get the current mode on screen */
+    get modeStatus() {
+      if (this.isDarkMode
+        || (!this.hasMode && this.isSysDarkPrefer) ) {
+        return ModeToggle.DARK_MODE;
+      } else {
+        return ModeToggle.LIGHT_MODE;
+      }
+    }
+
+    updateMermaid() {
+      if (typeof mermaid !== "undefined") {
+        let expectedTheme = (this.modeStatus === ModeToggle.DARK_MODE? "dark" : "default");
+        let config = { theme: expectedTheme };
+
+        /* re-render the SVG › <https://github.com/mermaid-js/mermaid/issues/311#issuecomment-332557344> */
+        $(".mermaid").each(function() {
+          let svgCode = $(this).prev().children().html();
+          $(this).removeAttr("data-processed");
+          $(this).html(svgCode);
+        });
+
+        mermaid.initialize(config);
+        mermaid.init(undefined, ".mermaid");
+      }
+    }
+
+    flipMode() {
+      if (this.hasMode) {
+        if (this.isSysDarkPrefer) {
+          if (this.isLightMode) {
+            this.clearMode();
+          } else {
+            this.setLight();
+          }
+
+        } else {
+          if (this.isDarkMode) {
+            this.clearMode();
+          } else {
+            this.setDark();
+          }
+        }
+
+      } else {
+        if (this.isSysDarkPrefer) {
+          this.setLight();
+        } else {
+          this.setDark();
+        }
+      }
+
+      this.updateMermaid();
+
+    } /* flipMode() */
+
+  } /* ModeToggle */
+
+  let toggle = new ModeToggle();
+
+  $(".mode-toggle").click(function() {
+
+    toggle.flipMode();
+
+  });
+
+</script>
+
+          </span>
     
 
   </div> <!-- .sidebar-bottom -->
@@ -304,324 +459,170 @@
   <div class="col-12 col-lg-11 col-xl-8">
     <div id="page" class="post pb-5 pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4 mb-md-4">
     
-      <div >
+      <style>
+  .grid-container {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: auto auto;
+    padding: 2px;
+  }
+  .grid-item {
+    padding: 2px;
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 70px;
+  }
+  .card2 {
+      width: 362px;
+      height: 300px;
+      position: relative;
+      display: inline-block;
+  }
+  .img {
+      width: 100%;
+      height: 100%;
+  }
+  .card2 .img-top {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 99;
+  }
+  .card2:hover .img-top {
+      display: inline;
+  }
+
+  .cards4 {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 1rem;
+  }
+
+  .card2:hover .middle { 
+    transition-delay: 0.6s;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 50px;
+    text-align: bottom;
+    opacity: 1;
+    z-index: 1000;
+  }
+
+  .middle {
+    opacity: 0;
+    position: absolute;
+    top: 260px;
+    left: 50%;
+    text-align: bottom;
+  }
+  .text {
+    background-color: rgba(0, 0, 0, 0.7);
+    width:100%;
+    height:100px;
+    color: white;
+    font-size: 16px;
+    padding: 16px 32px;
+  }
+  .check {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  align:center;
+  text-align: center
+  }
+  .rand1 {
+  float: left;
+  background-color:#2980B9;
+  margin:2px;
+  padding-right:10px;
+  padding-left:10px;
+  border-radius: 25px
+}
+.rand2 {
+  float: left;
+  background-color:#E74C3C ;
+  margin:2px;
+  padding-right:10px;
+  padding-left:10px;
+  border-radius: 25px
+}
+.rand1:hover{
+  background-color: #111111;
+}
+.rand2:hover{
+  background-color: #111111;
+}
+.table1 {
+	display: table;   /* Allow the centering to work */
+	margin-left: auto;
+  margin-right: auto;
+  margin-bottom:5px
+}
+</style>
+
+
+<div >
   <!-- <h1> At a glance</h1> -->
   <br>
   <p> I am Hamdan Iftikhar and I love telling stories with data. I am deeply passionate about discovering the insights hidden underneath a dataset, and sharing those through beautiful and thought-provoking visualizations.</p>
   <!-- <p> <ul><li>python</li><li>r</li><li>sql</li><li>markdown</li><li>dashboard</li></ul></p>   -->
-  
-  
-  
-</div>
-<hr class="dashed">
+  <hr class="dashed">
 
-  
-<div id="skills-id" style="width:50%; float: left;">
-  <div style="width: 100%;">
-  <!-- <h1 style="margin-bottom: 10%;">Skils</h1> -->
-  <div style="margin-top:5%; margin-right: 10%; height: 100%" class="language-text highlighter-rouge">
-    <div class="code-header">
-    <span text-data="Skills and Areas of Expertise"><i class="fa-fw fas fa-code small"></i></span>
-    <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button>
-  </div>
-  <div class="highlight" style="overflow:scroll;">
-    <code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl">
-</td><td class="rouge-code"><pre>
-<span class="language-plaintext highlighter-rouge">--Languages and Packages </span>
-<p style="line-height: 1.1em; padding: 0; margin: 0;"><span class="k">R     </span><span class="c1"> Wrangling & Analysis <span class="o">(tidyverse)</span></span>
-<span class="k">      </span><span class="c1"> Visualization <span class="o">(ggplot2)</span></span>
-<span class="k">      </span><span class="c1"> Date-time <span class="o">(lubridate)</span></span>
-<span class="k">      </span><span class="c1"> Documentation <span class="o">(rmarkdown)</span></span> </p><p style="line-height: 1.1em; padding: 0; margin: 0; margin-top: 0.5em;"><span class="k">Python</span><span class="c1"> Scraping <span class="s1">(BeautifulSoup, requests)</span></span>
-<span class="k">      </span><span class="c1"> Analysis <span class="s1">(pandas, scipy)</span></span>
-<span class="k">      </span><span class="c1"> Visualization <span class="s1">(matplotlib)</span></span></p><p style="line-height: 1.1em; padding: 0; margin: 0; margin-top: 0.5em; margin-bottom: 0.8em;"><span class="k">SQL   </span><span class="c1"> Sort and Filter functions</span>
-<span class="k">      </span><span class="c1"> Aggregate functions</span>
-<span class="k">      </span><span class="c1"> Joins, Unions, and more.</span></p><span class="language-plaintext highlighter-rouge">--Tools </span>
-<p style="line-height: 1.1em; padding: 0; margin: 0;"><span class="k">Spreadsheets</span><span class="c1"> Functions, Pivot, and more. </span><p style="line-height: 1.1em; padding: 0; margin: 0; margin-top: 0.5em; margin-bottom: 0.8em;"><span class="k">Dashboards  </span><span class="c1"> Scraping </span></p><span class="language-plaintext highlighter-rouge">--Soft-skills </span>
-<p style="line-height: 1.1em; padding: 0; margin: 0;"><span class="k">Adaptability</span><span class="k">       Creativity </span><p style="line-height: 1.1em; padding: 0; margin: 0; margin-top: 0.5em; "><span class="k">Work Ethic  </span><span class="k">       Attention to Detail </span></p><p style="line-height: 1.1em; padding: 0; margin: 0; margin-top: 0.5em; "><span class="k">Teamwork  </span><span class="k">         Analytical Mindset </span></p>
-</td></tr></tbody></table></code></div></div>
-  <!-- <ul><li>python</li><li>r</li><li>sql</li><li>markdown</li><li>dashboard</li></ul> -->
-</div>
-</div>
+  <div style="width:100%;;">
+  <div class="cards4">
 
-
-<div id="list-id" style="width: 50%;float: right; padding-bottom: 20px;">
-  <h1 style="padding: 0; margin: 0; margin-top: 5%; margin-bottom: 5%;"> Projects</h1>
-
-
-
-
-
-
-
-
-
-<!-- Get pinned posts -->
-
-
-
-
-
-
-
-<!-- Get default posts -->
-
-
-
-
-
-
-
-
-
-
-
-
-<div id="post-list">
-
-
-  <div class="post-preview">
-    <h1>
-      <a href="/posts/Clustering/">K-Means Clustering Visualization</a>
-    </h1>
-
-    <div class="post-content">
-      <p>
+    <div class="grid-item">
+      <h2 style="padding: 0; margin: 0; margin-bottom: 15px;">SKILLS & EXPERTISE</h2>
+      <a href='/about/'>
         
-
-
-
-
-
-        bzcmmccpowiq ppplasas bkbbbbb
-
-      </p>
-    </div>
-
-    <div class="post-meta text-muted d-flex justify-content-between">
-
-      <div>
-        <!-- posted date -->
-        <i class="far fa-calendar fa-fw"></i>
-        <!--
-  Date format snippet
-  See: /assets/js/_utils/timeage.js
--->
-
-
-
-
-
-
-<span class="timeago "
-  
-    data-toggle="tooltip"
-    data-placement="bottom"
-    title="Sat, Feb  5, 2022, 12:32 PM +0530"
-  >Feb  5<i class="unloaded">2022-02-05T12:32:00+05:30</i>
-</span>
-
-
-        <!-- time to read -->
-        <i class="far fa-clock fa-fw"></i>
-        <!--
-  Calculate the post's reading time, and display the word count in tooltip
- -->
-
-
-
-<!-- words per minute  -->
-
-
-
-
-
-
-
-
-
-
-<!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom"
-  title="212 words">1 min</span>
-
-
-        <!-- page views -->
-        
+      <div class="card2">
+          <img data-src="\assets\img\Projects\skills1black.png" src="\assets\img\Projects\skills1black.png" alt="Card Back">
+          <img data-src="\assets\img\Projects\skills2.png" src="\assets\img\Projects\skills2.png" class="img-top" alt="Card Front">
       </div>
-
-      
-
-    </div> <!-- .post-meta -->
-
-  </div> <!-- .post-review -->
-
-
-  <div class="post-preview">
-    <h1>
-      <a href="/posts/Recommender/">Recommender System</a>
-    </h1>
-
-    <div class="post-content">
-      <p>
-        
-
-
-
-
-
-        blahdada asdasdjas asdhasd  asdhasd  asdasasdjashd asdhas asjdha sdash d
-
-      </p>
+      </a>
     </div>
-
-    <div class="post-meta text-muted d-flex justify-content-between">
-
-      <div>
-        <!-- posted date -->
-        <i class="far fa-calendar fa-fw"></i>
-        <!--
-  Date format snippet
-  See: /assets/js/_utils/timeage.js
--->
-
-
-
-
-
-
-<span class="timeago "
   
-    data-toggle="tooltip"
-    data-placement="bottom"
-    title="Tue, Feb  1, 2022, 12:32 PM +0530"
-  >Feb  1<i class="unloaded">2022-02-01T12:32:00+05:30</i>
-</span>
-
-
-        <!-- time to read -->
-        <i class="far fa-clock fa-fw"></i>
-        <!--
-  Calculate the post's reading time, and display the word count in tooltip
- -->
-
-
-
-<!-- words per minute  -->
-
-
-
-
-
-
-
-
-
-
-<!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom"
-  title="212 words">1 min</span>
-
-
-        <!-- page views -->
+    <div class="grid-item">
+      <h2 style="padding: 0; margin: 0; margin-bottom: 15px;">PORTFOLIO PROJECTS</h2>
+      <a href='/portfolio/'>
         
+      <div class="card2">
+        
+          <img data-src="\assets\img\Projects\clus1.png" src="\assets\img\Projects\clus1.png" alt="Card Back">
+          <div class="middle">
+            <div class="text">
+              <div class="table1">
+                <ul class="check">
+                  <li class="rand1">Python</li>
+                  <li class="rand1">APIs</li>
+                  <li class="rand1">BagofWords</li>
+                </ul>
+              </div>
+              <div class="table1">
+                <ul class="check">
+                  <li class="rand2">Wrangling</li>
+                  <li class="rand2">NLP</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <img data-src="\assets\img\Projects\clus2.png" src="\assets\img\Projects\clus2.png" class="img-top" alt="Card Front">
+          
       </div>
-
-      
-
-    </div> <!-- .post-meta -->
-
-  </div> <!-- .post-review -->
-
-
-  <div class="post-preview">
-    <h1>
-      <a href="/posts/Bellabeat/">Google Data Analytics Capstone, Bellabeat</a>
-    </h1>
-
-    <div class="post-content">
-      <p>
-        
-
-
-
-
-
-        ashshahah hhahahahahahha ahahahah
-
-      </p>
+      </a>
     </div>
-
-    <div class="post-meta text-muted d-flex justify-content-between">
-
-      <div>
-        <!-- posted date -->
-        <i class="far fa-calendar fa-fw"></i>
-        <!--
-  Date format snippet
-  See: /assets/js/_utils/timeage.js
--->
-
-
-
-
-
-
-<span class="timeago "
-  
-    data-toggle="tooltip"
-    data-placement="bottom"
-    title="Wed, Dec  1, 2021, 12:32 PM +0530"
-  >Dec  1, 2021<i class="unloaded">2021-12-01T12:32:00+05:30</i>
-</span>
-
-
-        <!-- time to read -->
-        <i class="far fa-clock fa-fw"></i>
-        <!--
-  Calculate the post's reading time, and display the word count in tooltip
- -->
-
-
-
-<!-- words per minute  -->
-
-
-
-
-
-
-
-
-
-
-<!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom"
-  title="8140 words">45 min</span>
-
-
-        <!-- page views -->
-        
-      </div>
-
-      
-
-    </div> <!-- .post-meta -->
-
-  </div> <!-- .post-review -->
-
-
-
-</div> <!-- #post-list -->
-
-<p class="mb-0" id="more-id" style="font-size: 0.8em; line-height: 1em; padding-bottom: 0; margin-bottom: 0; margin-top: 1rem;">
-  <i>
-    <!-- ∗ More posts at Sidebar > PROJECTS <br> -->
-      </i>
-  <!-- <a href="javascript:void(0)"><span data-toggle="tooltip" data-placement="top"
-    title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Hamdan Iftikhar</span></a>. -->
-</p>
-
+  </div>  
 </div>
+</div>
+
+
+  
+
     
     </div> <!-- #page -->
   </div><!-- .col-12 -->
