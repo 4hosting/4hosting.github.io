@@ -8,6 +8,8 @@
 
 <html lang="en" 
   
+    mode="light"
+  
 >
 
   <!--
@@ -153,6 +155,15 @@
     <!-- the real tabs -->
     
     <li class="nav-item">
+      <a href="/portfolio/" class="nav-link">
+        <i class="fa-fw fas fa-tag ml-xl-3 mr-xl-3 unloaded"></i>
+        
+
+        <span>PORTFOLIO</span>
+      </a>
+    </li> <!-- .nav-item -->
+    
+    <li class="nav-item">
       <a href="/about/" class="nav-link">
         <i class="fa-fw fas fa-info-circle ml-xl-3 mr-xl-3 unloaded"></i>
         
@@ -172,7 +183,7 @@
       
       <a href="
           javascript:location.href = 'mailto:' + ['hamdan.iitkgp','gmail.com'].join('@')" aria-label="email"
-        class="order-3"
+        
         >
         <i class="fas fa-at"></i>
       </a>
@@ -183,7 +194,7 @@
 
       
       <a href="https://www.linkedin.com/in/hamdan-ai/" aria-label="linkedin"
-        class="order-4"
+        
         target="_blank" rel="noopener">
         <i class="fab fa-linkedin"></i>
       </a>
@@ -191,160 +202,6 @@
 
      -->
 
-    
-      <!-- 
-        <span class="icon-border order-2"></span>
-       -->
-
-      <span id="mode-toggle-wrapper" class="order-1" data-toggle="tooltip" data-placement="top"
-      title="Dark <-> Light mode">
-        <!--
-  Switch the mode between dark and light.
--->
-
-<i class="mode-toggle fas fa-adjust"></i>
-
-<script type="text/javascript">
-
-  class ModeToggle {
-    static get MODE_KEY() { return "mode"; }
-    static get DARK_MODE() { return "dark"; }
-    static get LIGHT_MODE() { return "light"; }
-
-    constructor() {
-      if (this.hasMode) {
-        if (this.isDarkMode) {
-          if (!this.isSysDarkPrefer) {
-            this.setDark();
-          }
-        } else {
-          if (this.isSysDarkPrefer) {
-            this.setLight();
-          }
-        }
-      }
-
-      var self = this;
-
-      /* always follow the system prefers */
-      this.sysDarkPrefers.addListener(function() {
-        if (self.hasMode) {
-          if (self.isDarkMode) {
-            if (!self.isSysDarkPrefer) {
-              self.setDark();
-            }
-
-          } else {
-            if (self.isSysDarkPrefer) {
-              self.setLight();
-            }
-          }
-
-          self.clearMode();
-        }
-
-        self.updateMermaid();
-      });
-
-    } /* constructor() */
-
-
-    setDark() {
-      $('html').attr(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE);
-      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE);
-    }
-
-    setLight() {
-      $('html').attr(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE);
-      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE);
-    }
-
-    clearMode() {
-      $('html').removeAttr(ModeToggle.MODE_KEY);
-      sessionStorage.removeItem(ModeToggle.MODE_KEY);
-    }
-
-    get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); }
-
-    get isSysDarkPrefer() { return this.sysDarkPrefers.matches; }
-
-    get isDarkMode() { return this.mode == ModeToggle.DARK_MODE; }
-
-    get isLightMode() { return this.mode == ModeToggle.LIGHT_MODE; }
-
-    get hasMode() { return this.mode != null; }
-
-    get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); }
-
-    /* get the current mode on screen */
-    get modeStatus() {
-      if (this.isDarkMode
-        || (!this.hasMode && this.isSysDarkPrefer) ) {
-        return ModeToggle.DARK_MODE;
-      } else {
-        return ModeToggle.LIGHT_MODE;
-      }
-    }
-
-    updateMermaid() {
-      if (typeof mermaid !== "undefined") {
-        let expectedTheme = (this.modeStatus === ModeToggle.DARK_MODE? "dark" : "default");
-        let config = { theme: expectedTheme };
-
-        /* re-render the SVG › <https://github.com/mermaid-js/mermaid/issues/311#issuecomment-332557344> */
-        $(".mermaid").each(function() {
-          let svgCode = $(this).prev().children().html();
-          $(this).removeAttr("data-processed");
-          $(this).html(svgCode);
-        });
-
-        mermaid.initialize(config);
-        mermaid.init(undefined, ".mermaid");
-      }
-    }
-
-    flipMode() {
-      if (this.hasMode) {
-        if (this.isSysDarkPrefer) {
-          if (this.isLightMode) {
-            this.clearMode();
-          } else {
-            this.setLight();
-          }
-
-        } else {
-          if (this.isDarkMode) {
-            this.clearMode();
-          } else {
-            this.setDark();
-          }
-        }
-
-      } else {
-        if (this.isSysDarkPrefer) {
-          this.setLight();
-        } else {
-          this.setDark();
-        }
-      }
-
-      this.updateMermaid();
-
-    } /* flipMode() */
-
-  } /* ModeToggle */
-
-  let toggle = new ModeToggle();
-
-  $(".mode-toggle").click(function() {
-
-    toggle.flipMode();
-
-  });
-
-</script>
-
-      </span>
     
 
   </div> <!-- .sidebar-bottom -->
@@ -4777,6 +4634,140 @@ variables</p>
         
         
 
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
 
 
   
@@ -4786,7 +4777,19 @@ variables</p>
 
       
         
+        <a class="post-tag" href="/tags/k-means/">K-Means</a>
+      
+        
+        <a class="post-tag" href="/tags/nlp/">NLP</a>
+      
+        
         <a class="post-tag" href="/tags/r/">R</a>
+      
+        
+        <a class="post-tag" href="/tags/recommender-system/">Recommender System</a>
+      
+        
+        <a class="post-tag" href="/tags/segmentation/">Segmentation</a>
       
         
         <a class="post-tag" href="/tags/visualization/">Visualization</a>
@@ -4842,6 +4845,32 @@ variables</p>
   
 
   
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
     
 
 
@@ -4857,11 +4886,121 @@ variables</p>
   
     
     
+      
+      
+        
+        
+        
+      
+    
+  
+    
+    
+      
+      
+        
+        
+        
+      
+    
+  
+    
+    
   
 
 
 
 
+
+  <div id="related-posts" class="mt-5 mb-2 mb-sm-4">
+    <h3 class="pt-2 mt-1 mb-4 ml-1"
+      data-toc-skip>Further Reading</h3>
+    <div class="card-deck mb-4">
+    
+      
+      
+      <div class="card">
+        <a href="/posts/Clustering/">
+          <div class="card-body">
+            <!--
+  Date format snippet
+  See: /assets/js/_utils/timeage.js
+-->
+
+
+
+
+
+
+<span class="timeago small"
+  >Feb  5<i class="unloaded">2022-02-05T12:32:00+05:30</i>
+</span>
+
+            <h3 class="pt-0 mt-1 mb-3" data-toc-skip>K-Means Clustering Visualization</h3>
+            <div class="text-muted small">
+              <p>
+                
+
+
+
+
+
+                Language :
+R
+
+
+INTRODUCTION
+
+In this case study, we worked as a junior data analyst working on the marketing analyst team at Bellabeat, a high-tech manufacturer of health-focused products for women...
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    
+      
+      
+      <div class="card">
+        <a href="/posts/Recommender/">
+          <div class="card-body">
+            <!--
+  Date format snippet
+  See: /assets/js/_utils/timeage.js
+-->
+
+
+
+
+
+
+<span class="timeago small"
+  >Feb  1<i class="unloaded">2022-02-01T12:32:00+05:30</i>
+</span>
+
+            <h3 class="pt-0 mt-1 mb-3" data-toc-skip>Recommender System</h3>
+            <div class="text-muted small">
+              <p>
+                
+
+
+
+
+
+                Language :
+R
+
+
+INTRODUCTION
+
+In this case study, we worked as a junior data analyst working on the marketing analyst team at Bellabeat, a high-tech manufacturer of health-focused products for women...
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    
+    </div> <!-- .card-deck -->
+  </div> <!-- #related-posts -->
 
 
 
@@ -4878,10 +5017,10 @@ variables</p>
   
 
   
-  <span class="btn btn-outline-primary disabled"
+  <a href="/posts/Recommender/" class="btn btn-outline-primary"
     prompt="Newer">
-    <p>-</p>
-  </span>
+    <p>Recommender System</p>
+  </a>
   
 
 </div>
@@ -4982,11 +5121,157 @@ variables</p>
         
         
 
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
 
 
       
         
+        <a class="post-tag" href="/tags/k-means/">K Means</a>
+      
+        
+        <a class="post-tag" href="/tags/nlp/">NLP</a>
+      
+        
         <a class="post-tag" href="/tags/r/">R</a>
+      
+        
+        <a class="post-tag" href="/tags/recommender-system/">Recommender System</a>
+      
+        
+        <a class="post-tag" href="/tags/segmentation/">Segmentation</a>
       
         
         <a class="post-tag" href="/tags/visualization/">Visualization</a>

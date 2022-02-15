@@ -22,27 +22,41 @@
 
   
 
+    <!-- i18n for `_javascript/utils/timeago.js` -->
+    <meta name="day-prompt" content="days ago">
+    <meta name="hour-prompt" content="hours ago">
+    <meta name="minute-prompt" content="minutes ago">
+    <meta name="justnow-prompt" content="just now">
+
+    
+
+    
+
+  
+
   <!-- Begin Jekyll SEO tag v2.7.1 -->
 <meta name="generator" content="Jekyll v4.2.1" />
-<meta property="og:title" content="About" />
+<meta property="og:title" content="Recommender System" />
+<meta name="author" content="Hamdan Iftikhar" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="I am Hamdan Iftikhar, I am here to make a difference, and this is just the beginning." />
-<meta property="og:description" content="I am Hamdan Iftikhar, I am here to make a difference, and this is just the beginning." />
-<link rel="canonical" href="http://localhost:4000/about/" />
-<meta property="og:url" content="http://localhost:4000/about/" />
+<meta name="description" content="Language : R" />
+<meta property="og:description" content="Language : R" />
+<link rel="canonical" href="http://localhost:4000/posts/Recommender/" />
+<meta property="og:url" content="http://localhost:4000/posts/Recommender/" />
 <meta property="og:site_name" content="Hamdan Iftikhar" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2022-02-15T11:56:35+05:30" />
+<meta property="article:published_time" content="2022-02-01T12:32:00+05:30" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="About" />
+<meta property="twitter:title" content="Recommender System" />
 <meta name="twitter:site" content="@twitter_username" />
+<meta name="twitter:creator" content="@Hamdan Iftikhar" />
 <meta name="google-site-verification" content="google_meta_tag_verification" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/about/","@type":"WebSite","headline":"About","dateModified":"2022-02-15T11:56:35+05:30","datePublished":"2022-02-15T11:56:35+05:30","sameAs":["https://twitter.com/username","https://github.com/username","https://www.linkedin.com/in/hamdan-ai"],"description":"I am Hamdan Iftikhar, I am here to make a difference, and this is just the beginning.","name":"Hamdan Iftikhar","@context":"https://schema.org"}</script>
+{"url":"http://localhost:4000/posts/Recommender/","author":{"@type":"Person","name":"Hamdan Iftikhar"},"@type":"BlogPosting","headline":"Recommender System","dateModified":"2022-02-01T12:32:00+05:30","datePublished":"2022-02-01T12:32:00+05:30","description":"Language : R","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/Recommender/"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
-  <title>About | Hamdan Iftikhar
+  <title>Recommender System | Hamdan Iftikhar
   </title>
 
   <!--
@@ -88,6 +102,9 @@
 <link rel="stylesheet" href="/assets/css/style.css">
 
 
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css">
+
 
 
   <!-- Manific Popup -->
@@ -107,48 +124,26 @@
     <!--
   The Side Bar
 -->
-<div id="sidebar" class="d-flex flex-column align-items-end" lang="en">
+
+<div id="sidebar" class="d-flex flex-column align-items-end" lang="en", style="width: 10rem;">
   <div class="profile-wrapper text-center">
     <!-- <div id="avatar">
       <a href="/" alt="avatar" class="mx-auto">
         
           
-          <img src="\assets\img\favicons\pic2.jpg" alt="avatar" onerror="this.style.display='none'">
+          <img src="\assets\img\favicons\passport.jpg" alt="avatar" onerror="this.style.display='none'">
         
       </a>
     </div> -->
-    <div id="avatar">
-      <a href="javascript:void(0)"  alt="avatar" class="mx-auto">
-        <script>
 
-        </script>
-        <img id="click_me" src="\assets\img\favicons\pic2.jpg" />
-        <!-- <a href="#" id="click_me">Click Me</a> -->
-        <script type="text/javascript">
-          document.getElementById('click_me').addEventListener("click", function(event) {
-              (function(event) {
-                  // alert(document.getElementById("click_me").src.endsWith("2.jpg"));
-                  // document.getElementById("click_me").src = "/assets/img/favicons/pic1.jpg";
-                  if (document.getElementById("click_me").src.endsWith("2.jpg"))  //==:Comparison
-                  {
-                    document.getElementById("click_me").src = "/assets/img/favicons/pic1.png"
-                  }
-                  else
-                    document.getElementById("click_me").src = "/assets/img/favicons/pic2.jpg"
-                  }).call(document.getElementById('click_me'), event);
-            });
-        </script>
-      </a>
-    </div>
-
-    <div class="site-title mt-3">
+    <div class="site-title mt-3", style="padding-bottom: 70%;">
       <a href="/">Hamdan Iftikhar</a>
     </div>
-    <div class="site-subtitle font-italic">Data Analyst</div>
+    <!-- <div class="site-subtitle font-italic">Data Analyst</div> -->
 
   </div><!-- .profile-wrapper -->
 
-  <ul class="w-100">
+  <ul class="w-100", style="vertical-align: middle;">
 
     <!-- home -->
     <li class="nav-item">
@@ -168,7 +163,7 @@
       </a>
     </li> <!-- .nav-item -->
     
-    <li class="nav-item active">
+    <li class="nav-item">
       <a href="/about/" class="nav-link">
         <i class="fa-fw fas fa-info-circle ml-xl-3 mr-xl-3 unloaded"></i>
         
@@ -182,7 +177,7 @@
 
   <div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center">
 
-    
+    <!-- 
       
 
       
@@ -205,7 +200,7 @@
       </a>
       
 
-    
+     -->
 
     
 
@@ -242,8 +237,12 @@
 
         
 
+      
+
+        
+
           
-            <span>About</span>
+            <span>Recommender System</span>
           
 
         
@@ -257,7 +256,7 @@
     <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i>
 
     <div id="topbar-title">
-      About
+      Post
     </div>
 
     <i id="search-trigger" class="fas fa-search fa-fw"></i>
@@ -306,6 +305,74 @@
 
 
 
+  <!-- add CDN prefix if it exists -->
+
+  
+
+  
+
+  <!-- lazy-load images <https://github.com/ApoorvSaxena/lozad.js#usage> -->
+
+  
+
+  <!-- add image placehoder to prevent layout reflow -->
+
+  
+
+  
+
+  
+    
+      
+      
+    
+
+    
+    
+    
+
+    
+      
+      
+
+      
+
+      
+
+    
+      
+      
+
+      
+
+      
+
+    
+      
+      
+
+      
+
+      
+
+    
+      
+      
+
+      
+
+      
+
+    
+
+    
+
+  
+
+  
+
+
+
 <!-- Add header for code snippets -->
 
 
@@ -313,32 +380,124 @@
 
 <!-- return -->
 
+
+
+
+
 <div class="row">
-  <div class="col-12 col-lg-11 col-xl-8">
-    <div id="page" class="post pb-5 pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4 mb-md-4">
-    
-      <h1 class="dynamic-title">
-        About
-      </h1>
+
+  <div id="post-wrapper" class="col-12 col-lg-11 col-xl-8">
+
+    <div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4">
+
+      <h1 data-toc-skip>Recommender System</h1>
+
+      <div class="post-meta text-muted d-flex flex-column">
+        <!-- Published date and author -->
+        <div>
+          <span class="semi-bold">
+            Hamdan Iftikhar
+          </span>
+          
+          <!--
+  Date format snippet
+  See: /assets/js/_utils/timeage.js
+-->
+
+
+
+
+
+
+  on
+
+<span class="timeago "
+  
+    data-toggle="tooltip"
+    data-placement="bottom"
+    title="Tue, Feb  1, 2022, 12:32 PM +0530"
+  >Feb  1<i class="unloaded">2022-02-01T12:32:00+05:30</i>
+</span>
+
+        </div>
+
+        <div>
+          <!-- lastmod -->
+          
+
+          <!-- read time -->
+          <!--
+  Calculate the post's reading time, and display the word count in tooltip
+ -->
+
+
+
+<!-- words per minute  -->
+
+
+
+
+
+
+
+
+
+
+<!-- return element -->
+<span class="readtime" data-toggle="tooltip" data-placement="bottom"
+  title="212 words">1 min
+     read</span>
+
+
+          <!-- page views -->
+          
+
+        </div>
+
+      </div> <!-- .post-meta -->
+
       <div class="post-content">
-        <p>I am Hamdan Iftikhar, I am here to make a difference, and this is just the beginning.
-<br /></p>
 
-<p>Ever since my recent transition as a data analyst, you’ll find me constantly adding to my work and refining and polishing it. What I lack in experience, I make up for with a passion to learn and an eagerness to deliver. Learning new stuff and solving problems make me immensely happy. I consider myself a ‘lifelong-learner’ and I’d like to grow old learning something new - Every. Single. Day.
-<br /></p>
+        
 
-<p>When I’m not working, you will find me watching Football (the real one :p) or MMA,  struggling with my Ukulele, in a game of chess, or in front of my refrigerator. 
-<br /><br /></p>
+        <div>Language :</div>
+<p><a href="javascript:void(0)"><button button="" onmouseover="this.style.color='#000'" onmouseout="this.style.color='#FFFFFF'" style="background-color: #4CAF50; /* Green */   border: none;   height: 40px;   color: white;   padding: 2px 20px;   text-align: center;   text-decoration: none;   display: inline-block;   font-size: 16px;   border-radius: 8px;" type="button">R</button></a>
+<!-- <a href="C:\Users\hamda\repotest\theme-test\_langs\R-documentation\2021-11-15-R-documentation-R.md"><button button onMouseOver="this.style.color='#000'"
+   onMouseOut="this.style.color='#FFFFFF'" style="background-color: #008CBA; /* Blue */
+  border: none;
+  height: 40px;
+  color: white;
+  padding: 2px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 8px;" type="button" >R</button></a>
+<a href="/_langs/2021-11-15-R-documentation-R.md"><button onMouseOver="this.style.color='#000'"
+   onMouseOut="this.style.color='#FFFFFF'" style="background-color: #f44336; /* Red */
+  border: none;
+  height: 40px;
+  color: white;
+  padding: 2px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 8px;" type="button" >Python</button></a> --></p>
+
+<h2 id="introduction">INTRODUCTION</h2>
+
+<p>In this case study, we worked as a junior data analyst working on the marketing analyst team at Bellabeat, a high-tech manufacturer of health-focused products for women, and were given the task to analyze smart device data to gain insight into how consumers are using their smart devices. The insights we discover will then help guide marketing strategy for the company. We have to present our analysis as well as the insights and high-level recommendations to the executive team at Bellabeat.</p>
 
 <hr />
 
-<p>The printer-friendly PDF version is available at: <a href="/resume.pdf">PDF</a></p>
+<hr />
 
 <div class="resume-container" style="position: relative;
             width: 100%;
             height: 1200px;
             background-color:white">
-<iframe class="resume" seamless="" src="https://docs.google.com/document/d/e/2PACX-1vRXPgtIrxuB4xQj_h9H0XQJzwtVmf3O2tm3p8GmAKk0ghWgNXrL5akljCvP4VR8oGIKNFHEpscRlRdq/pub?embedded=true" style="border:none;position: absolute;
+<iframe class="resume" seamless="" src="https://thatanalyst-rs.herokuapp.com/" style="border:none;position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
@@ -347,11 +506,120 @@
   height: 100%;"></iframe>
 </div>
 
+<h2 id="insights">INSIGHTS</h2>
+
+<h3 id="insight-1-distribution-of-participants-based-on-steps">Insight #1: Distribution of participants based on steps</h3>
+
+<p>On an average, a person in the dataset walks 8338 steps in a day, with the median steps being 8054.
+Research by the mayo clinic suggests an average American walks 3000 to 4000 steps per day. The people in the dataset are definitely much more active than the general population, but it is still below the recommended goal of 10000 steps per day, which help reduce the risk of a number of common health problems including:</p>
+<ul>
+  <li>Heart disease</li>
+  <li>Obesity</li>
+  <li>Diabetes</li>
+  <li>High blood pressure</li>
+  <li>Depression</li>
+</ul>
+
+<p>Average alone as a number does not give us much information about the distribution. Taking a look at how the number of people changes with different steps per day for the 33 participants -</p>
+
+<p><img data-proofer-ignore data-src="\assets\img\Bellabeat\unnamed-chunk-17-1.png" alt="" /><!-- --></p>
+
+
 
       </div>
+
+      <div class="post-tail-wrapper text-muted">
+
+        <!-- categories -->
+        
+
+        <div class="post-meta mb-3">
+          <i class="far fa-folder-open fa-fw mr-1"></i>
+          
+            <a href='/categories/recommender-system/'>Recommender System</a>,
+            <a href='/categories/app/'>app</a>
+        </div>
+        
+
+        <!-- tags -->
+        
+        <div class="post-tags">
+          <i class="fa fa-tags fa-fw mr-1"></i>
+          
+          <a href="/tags/recommender-system/"
+            class="post-tag no-text-decoration" >Recommender System</a>
+          
+          <a href="/tags/nlp/"
+            class="post-tag no-text-decoration" >NLP</a>
+          
+          </div>
+        
+
+        <div class="post-tail-bottom
+          d-flex justify-content-between align-items-center mt-3 pt-5 pb-2">
+          <div class="license-wrapper">
+          
+            
+            This post is licensed under 
+            <a href="https://creativecommons.org/licenses/by/4.0/">
+              CC BY 4.0
+            </a>
+             by the author.
+          
+          </div>
+
+          <!--
+ Post sharing snippet
+-->
+
+<div class="share-wrapper">
+  <span class="share-label text-muted mr-1">Share</span>
+  <span class="share-icons">
     
-    </div> <!-- #page -->
-  </div><!-- .col-12 -->
+    
+
+    
+      
+        <a href="https://twitter.com/intent/tweet?text=Recommender System - Hamdan Iftikhar&url=http://localhost:4000/posts/Recommender/" data-toggle="tooltip" data-placement="top"
+          title="Twitter" target="_blank" rel="noopener" aria-label="Twitter">
+          <i class="fa-fw fab fa-twitter"></i>
+        </a>
+    
+      
+        <a href="https://www.facebook.com/sharer/sharer.php?title=Recommender System - Hamdan Iftikhar&u=http://localhost:4000/posts/Recommender/" data-toggle="tooltip" data-placement="top"
+          title="Facebook" target="_blank" rel="noopener" aria-label="Facebook">
+          <i class="fa-fw fab fa-facebook-square"></i>
+        </a>
+    
+      
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:4000/posts/Recommender/" data-toggle="tooltip" data-placement="top"
+          title="Linkedin" target="_blank" rel="noopener" aria-label="Linkedin">
+          <i class="fa-fw fab fa-linkedin"></i>
+        </a>
+    
+
+    <i id="copy-link" class="fa-fw fas fa-link small"
+        data-toggle="tooltip" data-placement="top"
+        title="Copy link"
+        title-succeed="Link copied successfully!">
+    </i>
+
+  </span>
+</div>
+
+
+        </div><!-- .post-tail-bottom -->
+
+      </div><!-- div.post-tail -->
+
+    </div> <!-- .post -->
+
+
+  </div> <!-- #post-wrapper -->
+
+  
+
+  
 
   <!--
   The Pannel on right side (Desktop views)
@@ -597,13 +865,230 @@
 
 
   
+    <!-- BS-toc.js will be loaded at medium priority -->
+    <script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script>
+    <div id="toc-wrapper" class="pl-0 pr-4 mb-5">
+      <span class="pl-3 pt-2 mb-2">Contents</span>
+      <nav id="toc" data-toggle="toc"></nav>
+    </div>
+  
 
 </div> <!-- #panel-wrapper -->
 
 
+</div> <!-- .row -->
+
+<div class="row">
+  <div class="col-12 col-lg-11 col-xl-8">
+    <div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4">
+
+    <!--
+ Recommend the other 3 posts according to the tags and categories of the current post,
+ if the number is not enough, use the other latest posts to supplement.
+-->
+
+<!-- The total size of related posts  -->
+
+
+<!-- An random integer that bigger than 0  -->
+
+
+<!-- Equals to TAG_SCORE / {max_categories_hierarchy}  -->
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+<!-- Fill with the other newlest posts  -->
+
+
+
+
+  
+    
+    
+      
+      
+    
+  
+    
+    
+  
+    
+    
+      
+      
+        
+        
+        
+      
+    
+  
+
+
+
+
+
+  <div id="related-posts" class="mt-5 mb-2 mb-sm-4">
+    <h3 class="pt-2 mt-1 mb-4 ml-1"
+      data-toc-skip>Further Reading</h3>
+    <div class="card-deck mb-4">
+    
+      
+      
+      <div class="card">
+        <a href="/posts/Clustering/">
+          <div class="card-body">
+            <!--
+  Date format snippet
+  See: /assets/js/_utils/timeage.js
+-->
+
+
+
+
+
+
+<span class="timeago small"
+  >Feb  5<i class="unloaded">2022-02-05T12:32:00+05:30</i>
+</span>
+
+            <h3 class="pt-0 mt-1 mb-3" data-toc-skip>K-Means Clustering Visualization</h3>
+            <div class="text-muted small">
+              <p>
+                
+
+
+
+
+
+                Language :
+R
+
+
+INTRODUCTION
+
+In this case study, we worked as a junior data analyst working on the marketing analyst team at Bellabeat, a high-tech manufacturer of health-focused products for women...
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    
+      
+      
+      <div class="card">
+        <a href="/posts/Bellabeat/">
+          <div class="card-body">
+            <!--
+  Date format snippet
+  See: /assets/js/_utils/timeage.js
+-->
+
+
+
+
+
+
+<span class="timeago small"
+  >Dec  1, 2021<i class="unloaded">2021-12-01T12:32:00+05:30</i>
+</span>
+
+            <h3 class="pt-0 mt-1 mb-3" data-toc-skip>Google Data Analytics Capstone, Bellabeat</h3>
+            <div class="text-muted small">
+              <p>
+                
+
+
+
+
+
+                Language :
+R
+
+
+INTRODUCTION
+
+In this case study, we worked as a junior data analyst working on the marketing analyst team at Bellabeat, a high-tech manufacturer of health-focused products for women...
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    
+    </div> <!-- .card-deck -->
+  </div> <!-- #related-posts -->
+
+
+
+    <!--
+  Navigation buttons at the bottom of the post.
+-->
+
+<div class="post-navigation d-flex justify-content-between">
+  
+  <a href="/posts/Bellabeat/" class="btn btn-outline-primary"
+    prompt="Older">
+    <p>Google Data Analytics Capstone, Bellabeat</p>
+  </a>
+  
+
+  
+  <a href="/posts/Clustering/" class="btn btn-outline-primary"
+    prompt="Newer">
+    <p>K-Means Clustering Visualization</p>
+  </a>
+  
+
 </div>
 
 
+    
+
+    </div> <!-- #post-extend-wrapper -->
+
+  </div> <!-- .col-* -->
+
+</div> <!-- .row -->
 
 
 
@@ -910,6 +1395,8 @@ SimpleJekyllSearch({
 <!-- layout specified -->
 
 
+  
+
 
 
   <!-- image lazy-loading & popup -->
@@ -919,7 +1406,7 @@ SimpleJekyllSearch({
 
 
 
-<script defer src="/assets/js/dist/page.min.js"></script>
+<script defer src="/assets/js/dist/post.min.js"></script>
 
 
 

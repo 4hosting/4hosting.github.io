@@ -8,6 +8,8 @@
 
 <html lang="en" 
   
+    mode="light"
+  
 >
 
   <!--
@@ -41,6 +43,7 @@
 <link rel="canonical" href="http://localhost:4000/" />
 <meta property="og:url" content="http://localhost:4000/" />
 <meta property="og:site_name" content="Hamdan Iftikhar" />
+<link rel="next" href="http://localhost:4000/page2" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Hamdan Iftikhar" />
 <meta name="twitter:site" content="@twitter_username" />
@@ -165,6 +168,15 @@
     <!-- the real tabs -->
     
     <li class="nav-item">
+      <a href="/portfolio/" class="nav-link">
+        <i class="fa-fw fas fa-tag ml-xl-3 mr-xl-3 unloaded"></i>
+        
+
+        <span>PORTFOLIO</span>
+      </a>
+    </li> <!-- .nav-item -->
+    
+    <li class="nav-item">
       <a href="/about/" class="nav-link">
         <i class="fa-fw fas fa-info-circle ml-xl-3 mr-xl-3 unloaded"></i>
         
@@ -184,7 +196,7 @@
       
       <a href="
           javascript:location.href = 'mailto:' + ['hamdan.iitkgp','gmail.com'].join('@')" aria-label="email"
-        class="order-3"
+        
         >
         <i class="fas fa-at"></i>
       </a>
@@ -195,7 +207,7 @@
 
       
       <a href="https://www.linkedin.com/in/hamdan-ai/" aria-label="linkedin"
-        class="order-4"
+        
         target="_blank" rel="noopener">
         <i class="fab fa-linkedin"></i>
       </a>
@@ -203,163 +215,6 @@
 
     
 
-    
-      
-        <span class="icon-border order-2"></span>
-      
-<!-- 
-      <span data-toggle="tooltip" data-placement="top"
-          title="Data that is Reliable, Original, Comprehensive, Cu">ROCCC</span>
-          -->
-          <span id="mode-toggle-wrapper" class="order-1" data-toggle="tooltip" data-placement="top"
-          title="Dark <-> Light mode">
-            <!--
-  Switch the mode between dark and light.
--->
-
-<i class="mode-toggle fas fa-adjust"></i>
-
-<script type="text/javascript">
-
-  class ModeToggle {
-    static get MODE_KEY() { return "mode"; }
-    static get DARK_MODE() { return "dark"; }
-    static get LIGHT_MODE() { return "light"; }
-
-    constructor() {
-      if (this.hasMode) {
-        if (this.isDarkMode) {
-          if (!this.isSysDarkPrefer) {
-            this.setDark();
-          }
-        } else {
-          if (this.isSysDarkPrefer) {
-            this.setLight();
-          }
-        }
-      }
-
-      var self = this;
-
-      /* always follow the system prefers */
-      this.sysDarkPrefers.addListener(function() {
-        if (self.hasMode) {
-          if (self.isDarkMode) {
-            if (!self.isSysDarkPrefer) {
-              self.setDark();
-            }
-
-          } else {
-            if (self.isSysDarkPrefer) {
-              self.setLight();
-            }
-          }
-
-          self.clearMode();
-        }
-
-        self.updateMermaid();
-      });
-
-    } /* constructor() */
-
-
-    setDark() {
-      $('html').attr(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE);
-      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE);
-    }
-
-    setLight() {
-      $('html').attr(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE);
-      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE);
-    }
-
-    clearMode() {
-      $('html').removeAttr(ModeToggle.MODE_KEY);
-      sessionStorage.removeItem(ModeToggle.MODE_KEY);
-    }
-
-    get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); }
-
-    get isSysDarkPrefer() { return this.sysDarkPrefers.matches; }
-
-    get isDarkMode() { return this.mode == ModeToggle.DARK_MODE; }
-
-    get isLightMode() { return this.mode == ModeToggle.LIGHT_MODE; }
-
-    get hasMode() { return this.mode != null; }
-
-    get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); }
-
-    /* get the current mode on screen */
-    get modeStatus() {
-      if (this.isDarkMode
-        || (!this.hasMode && this.isSysDarkPrefer) ) {
-        return ModeToggle.DARK_MODE;
-      } else {
-        return ModeToggle.LIGHT_MODE;
-      }
-    }
-
-    updateMermaid() {
-      if (typeof mermaid !== "undefined") {
-        let expectedTheme = (this.modeStatus === ModeToggle.DARK_MODE? "dark" : "default");
-        let config = { theme: expectedTheme };
-
-        /* re-render the SVG › <https://github.com/mermaid-js/mermaid/issues/311#issuecomment-332557344> */
-        $(".mermaid").each(function() {
-          let svgCode = $(this).prev().children().html();
-          $(this).removeAttr("data-processed");
-          $(this).html(svgCode);
-        });
-
-        mermaid.initialize(config);
-        mermaid.init(undefined, ".mermaid");
-      }
-    }
-
-    flipMode() {
-      if (this.hasMode) {
-        if (this.isSysDarkPrefer) {
-          if (this.isLightMode) {
-            this.clearMode();
-          } else {
-            this.setLight();
-          }
-
-        } else {
-          if (this.isDarkMode) {
-            this.clearMode();
-          } else {
-            this.setDark();
-          }
-        }
-
-      } else {
-        if (this.isSysDarkPrefer) {
-          this.setLight();
-        } else {
-          this.setDark();
-        }
-      }
-
-      this.updateMermaid();
-
-    } /* flipMode() */
-
-  } /* ModeToggle */
-
-  let toggle = new ModeToggle();
-
-  $(".mode-toggle").click(function() {
-
-    toggle.flipMode();
-
-  });
-
-</script>
-
-          </span>
     
 
   </div> <!-- .sidebar-bottom -->
@@ -452,10 +307,6 @@
       <div >
   <!-- <h1> At a glance</h1> -->
   <br>
-  <blockquote>What did the data analysts name their music band? The 
-    <span data-toggle="tooltip" data-placement="top"
-          title="Data that is Reliable, Original, Comprehensive, Current, and Cited (ROCCC). A term coined by Hallie at Google for good data.">ROCCC</span>
-         band! :)</blockquote>
   <p> I am Hamdan Iftikhar and I love telling stories with data. I am deeply passionate about discovering the insights hidden underneath a dataset, and sharing those through beautiful and thought-provoking visualizations.</p>
   <!-- <p> <ul><li>python</li><li>r</li><li>sql</li><li>markdown</li><li>dashboard</li></ul></p>   -->
   
@@ -530,6 +381,160 @@
 
   <div class="post-preview">
     <h1>
+      <a href="/posts/Clustering/">K-Means Clustering Visualization</a>
+    </h1>
+
+    <div class="post-content">
+      <p>
+        
+
+
+
+
+
+        bzcmmccpowiq ppplasas bkbbbbb
+
+      </p>
+    </div>
+
+    <div class="post-meta text-muted d-flex justify-content-between">
+
+      <div>
+        <!-- posted date -->
+        <i class="far fa-calendar fa-fw"></i>
+        <!--
+  Date format snippet
+  See: /assets/js/_utils/timeage.js
+-->
+
+
+
+
+
+
+<span class="timeago "
+  
+    data-toggle="tooltip"
+    data-placement="bottom"
+    title="Sat, Feb  5, 2022, 12:32 PM +0530"
+  >Feb  5<i class="unloaded">2022-02-05T12:32:00+05:30</i>
+</span>
+
+
+        <!-- time to read -->
+        <i class="far fa-clock fa-fw"></i>
+        <!--
+  Calculate the post's reading time, and display the word count in tooltip
+ -->
+
+
+
+<!-- words per minute  -->
+
+
+
+
+
+
+
+
+
+
+<!-- return element -->
+<span class="readtime" data-toggle="tooltip" data-placement="bottom"
+  title="212 words">1 min</span>
+
+
+        <!-- page views -->
+        
+      </div>
+
+      
+
+    </div> <!-- .post-meta -->
+
+  </div> <!-- .post-review -->
+
+
+  <div class="post-preview">
+    <h1>
+      <a href="/posts/Recommender/">Recommender System</a>
+    </h1>
+
+    <div class="post-content">
+      <p>
+        
+
+
+
+
+
+        blahdada asdasdjas asdhasd  asdhasd  asdasasdjashd asdhas asjdha sdash d
+
+      </p>
+    </div>
+
+    <div class="post-meta text-muted d-flex justify-content-between">
+
+      <div>
+        <!-- posted date -->
+        <i class="far fa-calendar fa-fw"></i>
+        <!--
+  Date format snippet
+  See: /assets/js/_utils/timeage.js
+-->
+
+
+
+
+
+
+<span class="timeago "
+  
+    data-toggle="tooltip"
+    data-placement="bottom"
+    title="Tue, Feb  1, 2022, 12:32 PM +0530"
+  >Feb  1<i class="unloaded">2022-02-01T12:32:00+05:30</i>
+</span>
+
+
+        <!-- time to read -->
+        <i class="far fa-clock fa-fw"></i>
+        <!--
+  Calculate the post's reading time, and display the word count in tooltip
+ -->
+
+
+
+<!-- words per minute  -->
+
+
+
+
+
+
+
+
+
+
+<!-- return element -->
+<span class="readtime" data-toggle="tooltip" data-placement="bottom"
+  title="212 words">1 min</span>
+
+
+        <!-- page views -->
+        
+      </div>
+
+      
+
+    </div> <!-- .post-meta -->
+
+  </div> <!-- .post-review -->
+
+
+  <div class="post-preview">
+    <h1>
       <a href="/posts/Bellabeat/">Google Data Analytics Capstone, Bellabeat</a>
     </h1>
 
@@ -541,13 +546,8 @@
 
 
 
-        Language :
-R
+        ashshahah hhahahahahahha ahahahah
 
-
-INTRODUCTION
-
-In this case study, we worked as a junior data analyst working on the marketing analyst team at Bellabeat, a high-tech manufacturer of health-focused products for women...
       </p>
     </div>
 
@@ -616,9 +616,7 @@ In this case study, we worked as a junior data analyst working on the marketing 
 <p class="mb-0" id="more-id" style="font-size: 0.8em; line-height: 1em; padding-bottom: 0; margin-bottom: 0; margin-top: 1rem;">
   <i>
     <!-- ∗ More posts at Sidebar > PROJECTS <br> -->
-    ∗ Resume, information at Sidebar > ABOUT. <br>
-    ∗ Light mode at Sidebar > Bottom-Left toggle. <br>
-    * More posts will be published here shortly. </i>
+      </i>
   <!-- <a href="javascript:void(0)"><span data-toggle="tooltip" data-placement="top"
     title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Hamdan Iftikhar</span></a>. -->
 </p>
@@ -701,6 +699,140 @@ In this case study, we worked as a junior data analyst working on the marketing 
         
         
 
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
 
 
   
@@ -710,7 +842,19 @@ In this case study, we worked as a junior data analyst working on the marketing 
 
       
         
+        <a class="post-tag" href="/tags/k-means/">K-Means</a>
+      
+        
+        <a class="post-tag" href="/tags/nlp/">NLP</a>
+      
+        
         <a class="post-tag" href="/tags/r/">R</a>
+      
+        
+        <a class="post-tag" href="/tags/recommender-system/">Recommender System</a>
+      
+        
+        <a class="post-tag" href="/tags/segmentation/">Segmentation</a>
       
         
         <a class="post-tag" href="/tags/visualization/">Visualization</a>
@@ -821,11 +965,157 @@ In this case study, we worked as a junior data analyst working on the marketing 
         
         
 
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
 
 
       
         
+        <a class="post-tag" href="/tags/k-means/">K Means</a>
+      
+        
+        <a class="post-tag" href="/tags/nlp/">NLP</a>
+      
+        
         <a class="post-tag" href="/tags/r/">R</a>
+      
+        
+        <a class="post-tag" href="/tags/recommender-system/">Recommender System</a>
+      
+        
+        <a class="post-tag" href="/tags/segmentation/">Segmentation</a>
       
         
         <a class="post-tag" href="/tags/visualization/">Visualization</a>

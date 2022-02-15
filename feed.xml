@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Hamdan Iftikhar</title>
   <subtitle>A data analyst</subtitle>
-  <updated>2022-02-12T12:24:05+05:30</updated>
+  <updated>2022-02-15T11:56:35+05:30</updated>
   <author>
     <name>Hamdan Iftikhar</name>
     <uri>http://localhost:4000/</uri>
@@ -17,6 +17,94 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>K-Means Clustering Visualization</title>
+    <link href="http://localhost:4000/posts/Clustering/" rel="alternate" type="text/html" title="K-Means Clustering Visualization" />
+    <published>2022-02-05T12:32:00+05:30</published>
+  
+    <updated>2022-02-05T12:32:00+05:30</updated>
+  
+    <id>http://localhost:4000/posts/Clustering/</id>
+    <content src="http://localhost:4000/posts/Clustering/" />
+    <author>
+      <name>Hamdan Iftikhar</name>
+    </author>
+
+  
+    
+    <category term="K-Means" />
+    
+    <category term="app" />
+    
+    <category term="Clustering" />
+    
+    <category term="Segmentation" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      Language :
+R
+
+
+INTRODUCTION
+
+In this case study, we worked as a junior data analyst working on the marketing analyst team at Bellabeat, a high-tech manufacturer of health-focused products for women, and were given the task to analyze smart device data to gain insight into how consumers are using their smart devices. The insights we discover will then help guide marketing strategy for the compan...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>Recommender System</title>
+    <link href="http://localhost:4000/posts/Recommender/" rel="alternate" type="text/html" title="Recommender System" />
+    <published>2022-02-01T12:32:00+05:30</published>
+  
+    <updated>2022-02-01T12:32:00+05:30</updated>
+  
+    <id>http://localhost:4000/posts/Recommender/</id>
+    <content src="http://localhost:4000/posts/Recommender/" />
+    <author>
+      <name>Hamdan Iftikhar</name>
+    </author>
+
+  
+    
+    <category term="Recommender System" />
+    
+    <category term="app" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      Language :
+R
+
+
+INTRODUCTION
+
+In this case study, we worked as a junior data analyst working on the marketing analyst team at Bellabeat, a high-tech manufacturer of health-focused products for women, and were given the task to analyze smart device data to gain insight into how consumers are using their smart devices. The insights we discover will then help guide marketing strategy for the compan...
+    </summary>
+  
+
+  </entry>
 
   
   <entry>
