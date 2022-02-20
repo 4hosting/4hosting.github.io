@@ -8,6 +8,8 @@
 
 <html lang="en" 
   
+    mode="light"
+  
 >
 
   <!--
@@ -181,7 +183,7 @@
       
       <a href="
           javascript:location.href = 'mailto:' + ['hamdan.iitkgp','gmail.com'].join('@')" aria-label="email"
-        class="order-3"
+        
         >
         <i class="fas fa-at"></i>
       </a>
@@ -192,7 +194,7 @@
 
       
       <a href="https://www.linkedin.com/in/hamdan-ai/" aria-label="linkedin"
-        class="order-4"
+        
         target="_blank" rel="noopener">
         <i class="fab fa-linkedin"></i>
       </a>
@@ -201,162 +203,7 @@
     
 
     
-      
-        <span class="icon-border order-2"></span>
-      
-<!-- 
-      <span data-toggle="tooltip" data-placement="top"
-          title="Data that is Reliable, Original, Comprehensive, Cu">ROCCC</span>
-          -->
-          <span id="mode-toggle-wrapper" class="order-1" data-toggle="tooltip" data-placement="top"
-          title="Dark <-> Light mode">
-            <!--
-  Switch the mode between dark and light.
--->
 
-<i class="mode-toggle fas fa-adjust"></i>
-
-<script type="text/javascript">
-
-  class ModeToggle {
-    static get MODE_KEY() { return "mode"; }
-    static get DARK_MODE() { return "dark"; }
-    static get LIGHT_MODE() { return "light"; }
-
-    constructor() {
-      if (this.hasMode) {
-        if (this.isDarkMode) {
-          if (!this.isSysDarkPrefer) {
-            this.setDark();
-          }
-        } else {
-          if (this.isSysDarkPrefer) {
-            this.setLight();
-          }
-        }
-      }
-
-      var self = this;
-
-      /* always follow the system prefers */
-      this.sysDarkPrefers.addListener(function() {
-        if (self.hasMode) {
-          if (self.isDarkMode) {
-            if (!self.isSysDarkPrefer) {
-              self.setDark();
-            }
-
-          } else {
-            if (self.isSysDarkPrefer) {
-              self.setLight();
-            }
-          }
-
-          self.clearMode();
-        }
-
-        self.updateMermaid();
-      });
-
-    } /* constructor() */
-
-
-    setDark() {
-      $('html').attr(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE);
-      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE);
-    }
-
-    setLight() {
-      $('html').attr(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE);
-      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE);
-    }
-
-    clearMode() {
-      $('html').removeAttr(ModeToggle.MODE_KEY);
-      sessionStorage.removeItem(ModeToggle.MODE_KEY);
-    }
-
-    get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); }
-
-    get isSysDarkPrefer() { return this.sysDarkPrefers.matches; }
-
-    get isDarkMode() { return this.mode == ModeToggle.DARK_MODE; }
-
-    get isLightMode() { return this.mode == ModeToggle.LIGHT_MODE; }
-
-    get hasMode() { return this.mode != null; }
-
-    get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); }
-
-    /* get the current mode on screen */
-    get modeStatus() {
-      if (this.isDarkMode
-        || (!this.hasMode && this.isSysDarkPrefer) ) {
-        return ModeToggle.DARK_MODE;
-      } else {
-        return ModeToggle.LIGHT_MODE;
-      }
-    }
-
-    updateMermaid() {
-      if (typeof mermaid !== "undefined") {
-        let expectedTheme = (this.modeStatus === ModeToggle.DARK_MODE? "dark" : "default");
-        let config = { theme: expectedTheme };
-
-        /* re-render the SVG › <https://github.com/mermaid-js/mermaid/issues/311#issuecomment-332557344> */
-        $(".mermaid").each(function() {
-          let svgCode = $(this).prev().children().html();
-          $(this).removeAttr("data-processed");
-          $(this).html(svgCode);
-        });
-
-        mermaid.initialize(config);
-        mermaid.init(undefined, ".mermaid");
-      }
-    }
-
-    flipMode() {
-      if (this.hasMode) {
-        if (this.isSysDarkPrefer) {
-          if (this.isLightMode) {
-            this.clearMode();
-          } else {
-            this.setLight();
-          }
-
-        } else {
-          if (this.isDarkMode) {
-            this.clearMode();
-          } else {
-            this.setDark();
-          }
-        }
-
-      } else {
-        if (this.isSysDarkPrefer) {
-          this.setLight();
-        } else {
-          this.setDark();
-        }
-      }
-
-      this.updateMermaid();
-
-    } /* flipMode() */
-
-  } /* ModeToggle */
-
-  let toggle = new ModeToggle();
-
-  $(".mode-toggle").click(function() {
-
-    toggle.flipMode();
-
-  });
-
-</script>
-
-          </span>
     
 
   </div> <!-- .sidebar-bottom -->
@@ -486,11 +333,17 @@
   <h1 class="pl-lg-2">
     <i class="fa fa-tag fa-fw text-muted"></i>
     Segmentation
-    <span class="lead text-muted pl-2">1</span>
+    <span class="lead text-muted pl-2">2</span>
   </h1>
   <ul class="post-content pl-0">
     
 
+    
+    <li class="d-flex justify-content-between pl-md-3 pr-md-3">
+      <a href="/posts/Sales/">Sales Insights</a>
+      <span class="dash flex-grow-1"></span>
+      <span class="text-muted small">Feb 20, 2022</span>
+    </li>
     
     <li class="d-flex justify-content-between pl-md-3 pr-md-3">
       <a href="/posts/Clustering/">K-Means Clustering Visualization</a>
@@ -574,23 +427,15 @@
     
     
     
-      
-        
-        
-
   
     
     
     
     
-      
-    
   
     
     
     
-    
-      
     
   
     
@@ -606,14 +451,19 @@
     
     
     
-      
-    
   
     
     
     
     
       
+        
+        
+
+  
+    
+    
+    
     
   
     
@@ -635,15 +485,6 @@
     
     
     
-    
-      
-    
-  
-    
-    
-    
-    
-      
     
   
     
@@ -673,8 +514,6 @@
     
     
     
-      
-    
   
     
     
@@ -700,8 +539,6 @@
     
     
     
-    
-      
     
   
     
@@ -724,6 +561,9 @@
         <a class="post-tag" href="/tags/k-means/">K-Means</a>
       
         
+        <a class="post-tag" href="/tags/segmentation/">Segmentation</a>
+      
+        
         <a class="post-tag" href="/tags/nlp/">NLP</a>
       
         
@@ -731,9 +571,6 @@
       
         
         <a class="post-tag" href="/tags/recommender-system/">Recommender System</a>
-      
-        
-        <a class="post-tag" href="/tags/segmentation/">Segmentation</a>
       
         
         <a class="post-tag" href="/tags/visualization/">Visualization</a>
@@ -840,23 +677,15 @@
     
     
     
-      
-        
-        
-
   
     
     
     
     
-      
-    
   
     
     
     
-    
-      
     
   
     
@@ -872,14 +701,19 @@
     
     
     
-      
-    
   
     
     
     
     
       
+        
+        
+
+  
+    
+    
+    
     
   
     
@@ -901,15 +735,6 @@
     
     
     
-    
-      
-    
-  
-    
-    
-    
-    
-      
     
   
     
@@ -939,8 +764,6 @@
     
     
     
-      
-    
   
     
     
@@ -966,8 +789,6 @@
     
     
     
-    
-      
     
   
     
@@ -985,6 +806,9 @@
         <a class="post-tag" href="/tags/k-means/">K Means</a>
       
         
+        <a class="post-tag" href="/tags/segmentation/">Segmentation</a>
+      
+        
         <a class="post-tag" href="/tags/nlp/">NLP</a>
       
         
@@ -992,9 +816,6 @@
       
         
         <a class="post-tag" href="/tags/recommender-system/">Recommender System</a>
-      
-        
-        <a class="post-tag" href="/tags/segmentation/">Segmentation</a>
       
         
         <a class="post-tag" href="/tags/visualization/">Visualization</a>
