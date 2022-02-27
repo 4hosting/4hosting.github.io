@@ -3,8 +3,8 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>http://localhost:4000/</id>
   <title>Hamdan Iftikhar</title>
-  <subtitle>A data analyst</subtitle>
-  <updated>2022-02-25T02:13:00+05:30</updated>
+  <subtitle>I am Hamdan Iftikhar, and I am a Facebook and Google certified Data Analyst. I can dive deep into your datasets, to find trends, uncover insights, and drive informed-decision making. I am a graduate from Indian Institute of Technology Kharagpur (IIT KGP).</subtitle>
+  <updated>2022-02-27T19:32:02+05:30</updated>
   <author>
     <name>Hamdan Iftikhar</name>
     <uri>http://localhost:4000/</uri>
