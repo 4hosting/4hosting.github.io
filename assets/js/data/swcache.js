@@ -44,7 +44,7 @@ const allowedDomains = [
     'www.google-analytics.com',
   
 
-  'localhost:4000',
+  'www.thatanalyst.net',
 
   'fonts.gstatic.com',
   'fonts.googleapis.com',
