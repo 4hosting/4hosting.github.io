@@ -4,7 +4,7 @@
   <id>http://thatanalyst.net/</id>
   <title>Hamdan Iftikhar</title>
   <subtitle>I am Hamdan Iftikhar, and I am a Facebook and Google certified Data Analyst.</subtitle>
-  <updated>2022-03-09T20:14:55+05:30</updated>
+  <updated>2022-03-15T13:01:53+05:30</updated>
   <author>
     <name>Hamdan Iftikhar</name>
     <uri>http://thatanalyst.net/</uri>
@@ -58,7 +58,17 @@ R
 
 INTRODUCTION
 
-In this case study, we worked as a junior data analyst working on the marketing analyst team at Bellabeat, a high-tech manufacturer of health-focused products for women, and were given the task to analyze smart device data to gain insight into how consumers are using their smart devices. The insights we discover will then help guide marketing strategy for the compan...
+Built a scraper for a client  to extract affiliate links from the  description of a Youtube video, given just the video URL.
+
+
+
+
+
+
+
+
+
+
     </summary>
   
 
@@ -104,7 +114,17 @@ R
 
 INTRODUCTION
 
-In this case study, we worked as a junior data analyst working on the marketing analyst team at Bellabeat, a high-tech manufacturer of health-focused products for women, and were given the task to analyze smart device data to gain insight into how consumers are using their smart devices. The insights we discover will then help guide marketing strategy for the compan...
+Created an interactive Tableau dashboard demonstrating over 150,000 sales records, with live filtering on location, time, products, customers, &amp;amp; more.
+
+
+
+
+
+
+                  
+
+
+
     </summary>
   
 
@@ -150,7 +170,28 @@ R
 
 INTRODUCTION
 
-In this case study, we worked as a junior data analyst working on the marketing analyst team at Bellabeat, a high-tech manufacturer of health-focused products for women, and were given the task to analyze smart device data to gain insight into how consumers are using their smart devices. The insights we discover will then help guide marketing strategy for the compan...
+Designed a k-means clustering algorithm from scratch and deployed it as an interactive widget demonstrating its working on various data-sets.
+
+ 
+Clustering Viz.
+
+
+
+
+
+Code
+
+Step 1: Importing the libraries
+import pickle
+import matplotlib.pyplot as plt
+import numpy as np
+import random
+
+
+
+Step 2: Importing the datasets
+file = open('pointList.pkl', 'rb')
+points = pickle....
     </summary>
   
 
@@ -192,7 +233,20 @@ R
 
 INTRODUCTION
 
-In this case study, we worked as a junior data analyst working on the marketing analyst team at Bellabeat, a high-tech manufacturer of health-focused products for women, and were given the task to analyze smart device data to gain insight into how consumers are using their smart devices. The insights we discover will then help guide marketing strategy for the compan...
+Built a movie recommendation system and deployed the end-to-end product in Heroku, with calls to ‘TMDB’ API for posters of recommendations.
+
+
+import pandas as pd
+import ast
+from numpy.core.numeric import NaN
+import requests
+
+
+
+moviesComplete = pd.read_csv('tmdb_5000_movies.csv')
+print(moviesComplete.columns)
+
+The dataset containes 4803 movies, with the following col...
     </summary>
   
 

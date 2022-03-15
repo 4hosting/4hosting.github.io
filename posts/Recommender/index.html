@@ -558,6 +558,49 @@
     
 
   
+    
+
+    
+    
+    
+
+    
+      
+      
+
+      
+
+      
+
+    
+      
+      
+
+      
+
+      
+
+    
+      
+      
+
+      
+
+      
+
+    
+      
+      
+
+      
+
+      
+
+    
+
+    
+
+  
 
   
 
@@ -636,7 +679,7 @@
 
 <!-- return element -->
 <span class="readtime" data-toggle="tooltip" data-placement="bottom"
-  title="229 words">1 min
+  title="1348 words">7 min
      read</span>
 
 
@@ -678,7 +721,608 @@
 
 <h2 id="introduction">INTRODUCTION</h2>
 
-<p>In this case study, we worked as a junior data analyst working on the marketing analyst team at Bellabeat, a high-tech manufacturer of health-focused products for women, and were given the task to analyze smart device data to gain insight into how consumers are using their smart devices. The insights we discover will then help guide marketing strategy for the company. We have to present our analysis as well as the insights and high-level recommendations to the executive team at Bellabeat.</p>
+<p>Built a movie recommendation system and deployed the end-to-end product in Heroku, with calls to ‘TMDB’ API for posters of recommendations.</p>
+
+<p><br /></p>
+<div class="language-python highlighter-rouge"><div class="code-header">
+        <span text-data="
+
+
+
+
+    Python
+
+"><i class="fa-fw fas fa-code small"></i></span>
+      <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">ast</span>
+<span class="kn">from</span> <span class="nn">numpy.core.numeric</span> <span class="kn">import</span> <span class="n">NaN</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<p><br /></p>
+<div class="language-python highlighter-rouge"><div class="code-header">
+        <span text-data="
+
+
+
+
+    Python
+
+"><i class="fa-fw fas fa-code small"></i></span>
+      <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="n">moviesComplete</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'tmdb_5000_movies.csv'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">moviesComplete</span><span class="p">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></div></div>
+<p>The dataset containes 4803 movies, with the following columns:</p>
+
+<div class="language-python highlighter-rouge"><div class="code-header">
+        <span text-data="
+
+
+
+
+    Python
+
+"><i class="fa-fw fas fa-code small"></i></span>
+      <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="c1"># Index(['budget', 'genres', 'homepage', 'id', 'keywords', 'original_language',
+#        'original_title', 'overview', 'popularity', 'production_companies',
+#        'production_countries', 'release_date', 'revenue', 'runtime',
+#        'spoken_languages', 'status', 'tagline', 'title', 'vote_average',
+#        'vote_count'],
+#        dtype='object')
+</span></pre></td></tr></tbody></table></code></div></div>
+
+<p><br /></p>
+<div class="language-python highlighter-rouge"><div class="code-header">
+        <span text-data="
+
+
+
+
+    Python
+
+"><i class="fa-fw fas fa-code small"></i></span>
+      <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td><td class="rouge-code"><pre><span class="c1"># Ouput = -1
+</span>
+<span class="k">def</span> <span class="nf">getPoster</span><span class="p">(</span><span class="n">movieId</span><span class="p">):</span>
+    <span class="n">url_base</span> <span class="o">=</span> <span class="s">'https://api.themoviedb.org/3/movie/{}?api_key=[API_KEY]&amp;language=en-US'</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">url_base</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">movieId</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">if</span> <span class="s">'success'</span> <span class="ow">in</span> <span class="n">data</span><span class="p">.</span><span class="n">keys</span><span class="p">():</span>
+      <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s">'success'</span><span class="p">]</span> <span class="o">==</span> <span class="bp">False</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">if</span> <span class="s">'poster_path'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">.</span><span class="n">keys</span><span class="p">():</span>
+      <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">'poster_path'</span><span class="p">])</span> <span class="o">!=</span> <span class="nb">str</span><span class="p">:</span>
+      <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">'poster_path'</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="s">'https://image.tmdb.org/t/p/w500'</span> <span class="o">+</span> <span class="n">data</span><span class="p">[</span><span class="s">'poster_path'</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">path</span>
+
+<span class="c1"># Demonstration:
+</span><span class="n">getPoster</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+<span class="s">''' Output: 
+    https://image.tmdb.org/t/p/w500/eHuGQ10FUzK1mdOY69wF5pGgEf5.jpg 
+'''</span>
+</pre></td></tr></tbody></table></code></div></div>
+<p><img data-proofer-ignore data-src="https://image.tmdb.org/t/p/w500/eHuGQ10FUzK1mdOY69wF5pGgEf5.jpg" width="300px" /></p>
+
+<p><br /></p>
+<div class="language-python highlighter-rouge"><div class="code-header">
+        <span text-data="
+
+
+
+
+    Python
+
+"><i class="fa-fw fas fa-code small"></i></span>
+      <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="n">moviesComplete</span><span class="p">[</span><span class="s">'poster'</span><span class="p">]</span> <span class="o">=</span> <span class="n">moviesComplete</span><span class="p">.</span><span class="nb">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">getPoster</span><span class="p">(</span><span class="n">row</span><span class="p">.</span><span class="nb">id</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">moviesComplete</span> <span class="o">=</span> <span class="n">moviesComplete</span><span class="p">[</span><span class="n">moviesComplete</span><span class="p">[</span><span class="s">'poster'</span><span class="p">]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">movies</span> <span class="o">=</span> <span class="n">moviesComplete</span><span class="p">[[</span><span class="s">'id'</span><span class="p">,</span> <span class="s">'title'</span><span class="p">,</span> <span class="s">'genres'</span><span class="p">,</span> <span class="s">'vote_average'</span><span class="p">,</span> <span class="s">'overview'</span><span class="p">,</span> <span class="s">'poster'</span><span class="p">]]</span>
+<span class="n">movies</span><span class="p">[</span><span class="s">'over'</span><span class="p">]</span> <span class="o">=</span> <span class="n">movies</span><span class="p">[</span><span class="s">'overview'</span><span class="p">]</span>
+<span class="n">movies</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># This
+</span>
+<span class="s">'''
+        id  	title	genres	                                                vote_average	overview	                                        poster	                                                       over
+0	19995	Avatar	[{"id": 28, "name": "Action"}, {"id": 12, "nam...	7.2	        In the 22nd century, a paraplegic Marine is di...	https://image.tmdb.org/t/p/w500/jRXYjXNq0Cs2Tc...	       In the 22nd century, a paraplegic Marine is di...
+'''</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<p><br /></p>
+<div class="language-python highlighter-rouge"><div class="code-header">
+        <span text-data="
+
+
+
+
+    Python
+
+"><i class="fa-fw fas fa-code small"></i></span>
+      <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="k">def</span> <span class="nf">strToList</span><span class="p">(</span><span class="n">var</span><span class="p">):</span>
+  <span class="n">genres</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">ast</span><span class="p">.</span><span class="n">literal_eval</span><span class="p">(</span><span class="n">var</span><span class="p">):</span>
+    <span class="n">genres</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s">'name'</span><span class="p">])</span>
+  <span class="k">return</span> <span class="n">genres</span>
+<span class="n">genresList</span> <span class="o">=</span> <span class="n">movies</span><span class="p">[</span><span class="s">'genres'</span><span class="p">].</span><span class="nb">apply</span><span class="p">(</span><span class="n">strToList</span><span class="p">)</span>
+
+<span class="c1"># Demonstration:
+# This function converts - 
+</span><span class="s">''' [{"id": 28, "name": "Action"}, {"id": 12, "name": "Adventure"}, {"id": 14, "name": "Fantasy"}, {"id": 878, "name": "Science Fiction"}] '''</span>
+<span class="c1"># To - 
+</span><span class="s">''' ['Action', 'Adventure', 'Fantasy', 'Science Fiction'] '''</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<p><br /></p>
+<div class="language-python highlighter-rouge"><div class="code-header">
+        <span text-data="
+
+
+
+
+    Python
+
+"><i class="fa-fw fas fa-code small"></i></span>
+      <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="n">movies</span><span class="p">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s">'genres'</span><span class="p">]</span> <span class="o">=</span> <span class="n">genresList</span>
+<span class="n">movies</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># This
+</span>
+<span class="s">'''
+        id  	title	genres	                                                vote_average	overview	                                        poster	                                                       over
+0	19995	Avatar	[Action, Adventure, Fantasy, Science Fiction]	        7.2             In the 22nd century, a paraplegic Marine is di...	https://image.tmdb.org/t/p/w500/jRXYjXNq0Cs2Tc...	       In the 22nd century, a paraplegic Marine is di...
+'''</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<p><br /></p>
+<div class="language-python highlighter-rouge"><div class="code-header">
+        <span text-data="
+
+
+
+
+    Python
+
+"><i class="fa-fw fas fa-code small"></i></span>
+      <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">nltk</span>
+<span class="n">nltk</span><span class="p">.</span><span class="n">download</span><span class="p">(</span><span class="s">'stopwords'</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<p><br /></p>
+<div class="language-python highlighter-rouge"><div class="code-header">
+        <span text-data="
+
+
+
+
+    Python
+
+"><i class="fa-fw fas fa-code small"></i></span>
+      <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">RegexpTokenizer</span>
+
+<span class="k">def</span> <span class="nf">removePunc</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+  <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="p">.</span><span class="n">lower</span><span class="p">()</span>
+  <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">RegexpTokenizer</span><span class="p">(</span><span class="sa">r</span><span class="s">'\w+'</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">tokenizer</span><span class="p">.</span><span class="n">tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<p><br /></p>
+<div class="language-python highlighter-rouge"><div class="code-header">
+        <span text-data="
+
+
+
+
+    Python
+
+"><i class="fa-fw fas fa-code small"></i></span>
+      <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="n">stop_words</span> <span class="o">=</span> <span class="n">stopwords</span><span class="p">.</span><span class="n">words</span><span class="p">(</span><span class="s">'english'</span><span class="p">)</span>
+<span class="n">stopwords_dict</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">stop_words</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">removeStop</span><span class="p">(</span><span class="n">wordList</span><span class="p">):</span>
+  <span class="k">return</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">wordList</span> <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stopwords_dict</span><span class="p">]</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<p><br /></p>
+<div class="language-python highlighter-rouge"><div class="code-header">
+        <span text-data="
+
+
+
+
+    Python
+
+"><i class="fa-fw fas fa-code small"></i></span>
+      <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">nltk.stem</span> <span class="kn">import</span> <span class="n">PorterStemmer</span>
+<span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">word_tokenize</span> 
+<span class="n">ps</span> <span class="o">=</span> <span class="n">PorterStemmer</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">stemWords</span><span class="p">(</span><span class="n">wordList</span><span class="p">):</span>
+  <span class="k">return</span> <span class="p">[</span><span class="n">ps</span><span class="p">.</span><span class="n">stem</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">wordList</span><span class="p">]</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<p><br /></p>
+<div class="language-python highlighter-rouge"><div class="code-header">
+        <span text-data="
+
+
+
+
+    Python
+
+"><i class="fa-fw fas fa-code small"></i></span>
+      <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="k">def</span> <span class="nf">puncStopStem</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+  <span class="k">return</span> <span class="s">' '</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">stemWords</span><span class="p">(</span><span class="n">removeStop</span><span class="p">(</span><span class="n">removePunc</span><span class="p">(</span><span class="n">text</span><span class="p">))))</span>
+<span class="n">movies</span><span class="p">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s">'overview'</span><span class="p">]</span> <span class="o">=</span> <span class="n">movies</span><span class="p">[</span><span class="s">'overview'</span><span class="p">].</span><span class="nb">apply</span><span class="p">(</span><span class="n">puncStopStem</span><span class="p">)</span>
+
+<span class="s">'''
+In the 22nd century, a paraplegic Marine is di...
+# To
+22nd centuri parapleg marin dispatch moon pand...
+'''</span>	
+</pre></td></tr></tbody></table></code></div></div>
+
+<p><br /></p>
+<div class="language-python highlighter-rouge"><div class="code-header">
+        <span text-data="
+
+
+
+
+    Python
+
+"><i class="fa-fw fas fa-code small"></i></span>
+      <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre><span class="c1">#vectorizatiom
+</span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">max_features</span> <span class="o">=</span> <span class="mi">5000</span><span class="p">)</span>
+<span class="n">vectors</span> <span class="o">=</span> <span class="n">cv</span><span class="p">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">movies</span><span class="p">[</span><span class="s">'overview'</span><span class="p">]).</span><span class="n">toarray</span><span class="p">()</span>
+
+<span class="s">''' Example:
+['advanc',
+ 'advantag',
+ 'adventur',
+ 'advertis',
+ 'advic',
+ 'advis',...]
+ '''</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<p><br /></p>
+<div class="language-python highlighter-rouge"><div class="code-header">
+        <span text-data="
+
+
+
+
+    Python
+
+"><i class="fa-fw fas fa-code small"></i></span>
+      <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">cosine_similarity</span>
+<span class="n">similarity</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">vectors</span><span class="p">)</span>
+<span class="n">simdf</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">similarity</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">simdf</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">simdf</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="s">'''
+(4734, 4734)
+0	1	        2	        3	    4	        5         	6	        7       	8	9	10	11	12	13	14	15	16	17	18	19	20	21	22	23	24	25	26	27	28	29	30	31	32	33	34	35	36	37	38	39	...	4694	4695	4696	4697	4698	4699	4700	4701	4702	4703	4704	4705	4706	4707	4708	4709	4710	4711	4712	4713	4714	4715	4716	4717	4718	4719	4720	4721	4722	4723	4724	4725	4726	4727	4728	4729	4730	4731	4732	4733
+0	1.000000	0.000000	0.00000	    0.105409	0.046374	0.043033	0.034816	0.045644	0.000000	0.000000	0.000000	0.043644	0.000000	0.000000	0.052705	0.000000	0.000000	0.000000	0.032026	0.000000	0.029424	0.000000	0.000000	0.00000	0.000000	0.000000	0.047946	0.105409	0.000000	0.036155	0.000000	0.074536	0.000000	0.000000	0.0	0.000000	0.078750	0.000000	0.031083	0.000000	...	0.000000	0.000000	0.00000	0.0	0.0	0.000000	0.000000	0.0	0.000000	0.0	0.000000	0.0	0.044281	0.0	0.0	0.000000	0.000000	0.000000	0.000000	0.000000	0.00	0.000000	0.038069	0.000000	0.000000	0.031311	0.043644	0.00000	0.0	0.0	0.000000	0.000000	0.000000	0.069007	0.045644	0.000000	0.0	0.0	0.036886	0.000000
+1	0.000000	1.000000	0.05164	    0.000000	0.046374	0.000000	0.000000	0.045644	0.000000	0.000000	0.000000	0.000000	0.071611	0.035466	0.052705	0.040324	0.049690	0.040324	0.128103	0.040324	0.029424	0.000000	0.062622	0.00000	0.000000	0.029050	0.047946	0.035136	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	0.0	0.133333	0.039375	0.000000	0.062167	0.000000	...	0.000000	0.023281	0.00000	0.2	0.0	0.079894	0.000000	0.0	0.045644	0.0	0.000000	0.0	0.000000	0.0	0.0	0.087287	0.059235	0.093250	0.092748	0.095893	0.00	0.074536	0.076139	0.028172	0.064550	0.031311	0.000000	0.00000	0.0	0.0	0.059235	0.046374	0.000000	0.034503	0.000000	0.000000	0.0	0.0	0.036886	0.000000
+2	0.000000	0.051640	1.00000	    0.000000	0.000000	0.033333	0.000000	0.035355	0.044721	0.032026	0.000000	0.270449	0.000000	0.027472	0.000000	0.000000	0.038490	0.093704	0.124035	0.000000	0.000000	0.000000	0.048507	0.04714	0.000000	0.000000	0.037139	0.027217	0.000000	0.196039	0.000000	0.000000	0.000000	0.050000	0.0	0.154919	0.030500	0.000000	0.072232	0.000000	...	0.000000	0.000000	0.00000	0.0	0.0	0.020628	0.000000	0.0	0.106066	0.0	0.000000	0.0	0.034300	0.0	0.0	0.000000	0.000000	0.024077	0.035921	0.000000	0.05	0.000000	0.029488	0.021822	0.000000	0.024254	0.033806	0.04264	0.0	0.0	0.000000	0.000000	0.106904	0.000000	0.000000	0.022942	0.0	0.0	0.028571	0.000000
+3	0.105409	0.000000	0.00000	    1.000000	0.024441	0.045361	0.073398	0.024056	0.060858	0.152535	0.024845	0.000000	0.000000	0.000000	0.000000	0.042505	0.026189	0.000000	0.016879	0.021253	0.015508	0.027778	0.000000	0.00000	0.087039	0.076553	0.025270	0.000000	0.032075	0.057166	0.046676	0.039284	0.057735	0.000000	0.0	0.000000	0.041505	0.030429	0.081912	0.025717	...	0.023689	0.049081	0.03637	0.0	0.0	0.014036	0.045361	0.0	0.072169	0.0	0.054433	0.0	0.070014	0.0	0.0	0.023002	0.000000	0.016382	0.024441	0.000000	0.00	0.039284	0.000000	0.044544	0.000000	0.099015	0.000000	0.00000	0.0	0.0	0.000000	0.024441	0.000000	0.054554	0.000000	0.000000	0.0	0.0	0.038881	0.086066
+4	0.046374	0.046374	0.00000     0.024441	1.000000	0.000000	0.024218	0.063500	0.000000	0.057520	0.032791	0.000000	0.049814
+'''</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<p><br /></p>
+<div class="language-python highlighter-rouge"><div class="code-header">
+        <span text-data="
+
+
+
+
+    Python
+
+"><i class="fa-fw fas fa-code small"></i></span>
+      <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+</pre></td><td class="rouge-code"><pre><span class="n">numcheck</span> <span class="o">=</span> <span class="n">simdf</span><span class="p">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">votes</span> <span class="o">=</span> <span class="n">movies</span><span class="p">[[</span><span class="s">'vote_average'</span><span class="p">]]</span>
+<span class="n">multi</span> <span class="o">=</span> <span class="n">votes</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">multi</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">multi</span><span class="p">[</span><span class="s">'vote_average'</span><span class="p">])</span>
+<span class="n">simdf</span> <span class="o">=</span> <span class="n">simdf</span><span class="o">*</span><span class="n">multi</span>
+<span class="n">similarity2</span> <span class="o">=</span> <span class="n">simdf</span><span class="p">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">recoRating</span><span class="p">(</span><span class="n">movieIndex</span><span class="p">):</span>
+  <span class="n">top_index_tuple</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">similarity2</span><span class="p">[</span><span class="n">movieIndex</span><span class="p">])),</span> 
+               <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]))[</span><span class="mi">1</span><span class="p">:</span><span class="mi">200</span><span class="p">]</span>
+  <span class="n">same_genre_indices</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="n">mainGenre</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">movies</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">movieIndex</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
+
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">top_index_tuple</span><span class="p">:</span>
+    <span class="n">compareGenre</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">movies</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">simcount</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">genre</span> <span class="ow">in</span> <span class="n">mainGenre</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">genre</span> <span class="ow">in</span> <span class="n">compareGenre</span><span class="p">:</span>
+        <span class="n">simcount</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">mainGenre</span><span class="p">)</span> <span class="o">-</span> <span class="n">simcount</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="n">same_genre_indices</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+      <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">same_genre_indices</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="k">break</span>
+  
+
+  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">same_genre_indices</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="n">same_genre_indices</span> <span class="o">=</span> <span class="n">top_index_tuple</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
+
+  <span class="c1">#top_index = [x[0] for x in top_index[:5]]
+</span>  <span class="n">top_index</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">same_genre_indices</span><span class="p">]</span>
+  <span class="n">top_titles</span> <span class="o">=</span> <span class="p">[</span><span class="n">movies</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="s">'title'</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">top_index</span><span class="p">]</span>
+  <span class="n">top_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">movies</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="s">'id'</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">top_index</span><span class="p">]</span>
+  <span class="n">top_ovr</span> <span class="o">=</span> <span class="p">[</span><span class="n">movies</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="s">'overview'</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">top_index</span><span class="p">]</span>
+  <span class="n">top_pos</span> <span class="o">=</span> <span class="p">[</span><span class="n">movies</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="s">'poster'</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">top_index</span><span class="p">]</span>
+
+  <span class="n">topList</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">topList</span><span class="p">.</span><span class="n">append</span><span class="p">([</span><span class="n">top_index</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">top_titles</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">top_ids</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">top_ovr</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">top_pos</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span>
+  <span class="k">return</span> <span class="n">topList</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<p><br /></p>
+<div class="language-python highlighter-rouge"><div class="code-header">
+        <span text-data="
+
+
+
+
+    Python
+
+"><i class="fa-fw fas fa-code small"></i></span>
+      <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre></td><td class="rouge-code"><pre><span class="n">recoRating</span><span class="p">(</span><span class="mi">423</span><span class="p">)</span>
+
+<span class="c1"># Demonstration:
+</span><span class="s">'''
+[[4221,
+  'Road Hard',
+  291362,
+  'https://image.tmdb.org/t/p/w500/aClpHJtwN2I6DmCZpu54LUVoQJK.jpg'],
+ [809,
+  'Forrest Gump',
+  13,
+  'https://image.tmdb.org/t/p/w500/saHP97rTPS5eLmrLQEcANmKrsFl.jpg'],
+ [2654,
+  'Groundhog Day',
+  137,
+  'https://image.tmdb.org/t/p/w500/gCgt1WARPZaXnq523ySQEUKinCs.jpg'],
+ [4226,
+  'Me You and Five Bucks',
+  361505,
+  'https://image.tmdb.org/t/p/w500/ukQf5WWnLerLsMR1bo33HmQ6EUG.jpg'],
+ [2602,
+  'Brazil',
+  68,
+  'https://image.tmdb.org/t/p/w500/d0PibPzCK4fVikjoD1PqHovbvkt.jpg']]
+'''</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<p><br /></p>
+<div class="language-python highlighter-rouge"><div class="code-header">
+        <span text-data="
+
+
+
+
+    Python
+
+"><i class="fa-fw fas fa-code small"></i></span>
+      <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>
+</pre></td></tr></tbody></table></code></div></div>
+
+<p><br /></p>
+<div class="language-python highlighter-rouge"><div class="code-header">
+        <span text-data="
+
+
+
+
+    Python
+
+"><i class="fa-fw fas fa-code small"></i></span>
+      <button aria-label="copy" title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>
+</pre></td></tr></tbody></table></code></div></div>
 
 <hr />
 
@@ -1239,7 +1883,16 @@ R
 
 INTRODUCTION
 
-In this case study, we worked as a junior data analyst working on the marketing analyst team at Bellabeat, a high-tech manufacturer of health-focused products for women...
+Designed a k-means clustering algorithm from scratch and deployed it as an interactive widget demonstrating its working on various data-sets.
+
+ 
+Clustering Viz.
+
+
+
+
+
+Co...
               </p>
             </div>
           </div>
@@ -1280,7 +1933,14 @@ R
 
 INTRODUCTION
 
-In this case study, we worked as a junior data analyst working on the marketing analyst team at Bellabeat, a high-tech manufacturer of health-focused products for women...
+Created an interactive Tableau dashboard demonstrating over 150,000 sales records, with live filtering on location, time, products, customers, &amp; more.
+
+
+
+
+
+
+       ...
               </p>
             </div>
           </div>
@@ -1321,7 +1981,17 @@ R
 
 INTRODUCTION
 
-In this case study, we worked as a junior data analyst working on the marketing analyst team at Bellabeat, a high-tech manufacturer of health-focused products for women...
+Built a scraper for a client  to extract affiliate links from the  description of a Youtube video, given just the video URL.
+
+
+
+
+
+
+
+
+
+
               </p>
             </div>
           </div>
